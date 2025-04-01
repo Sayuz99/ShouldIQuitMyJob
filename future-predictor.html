@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="See what your life could be like after you dramatically exit that Zoom meeting.">
+    
+    <!-- Favicon and Theme Color -->
+    <meta name="theme-color" content="#E63946">
+    
+    <!-- Social Media Tags -->
+    <meta property="og:title" content="Future Predictor - Should I Quit My Job Today">
+    <meta property="og:description" content="See what your life could be like after you dramatically exit that Zoom meeting.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <title>Future Predictor - Should I Quit My Job Today</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="badge-navbar.css">
+    <script src="badge-navbar.js" defer></script>
+
+</head>
+<body>
+    <div class="container">
+        <h1>🔮 Future Career Predictor 🔮</h1>
+        <p class="subheader">See what your life could be like after you dramatically exit that Zoom meeting</p>
+        <p class="disclaimer">Disclaimer: Results may vary. Future not guaranteed to include yacht ownership.</p>
+        
+        <div class="card">
+            <div class="form-controls">
+                <div class="form-group">
+                    <label for="currentRole">Current Role:</label>
+                    <input type="text" id="currentRole" placeholder="Corporate Despair Coordinator" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="yearsExperience">Years of Experience:</label>
+                    <input type="number" id="yearsExperience" min="0" max="50" value="5" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="workEnvironment">Current Work Environment:</label>
+                    <select id="workEnvironment" class="form-input">
+                        <option value="corporate">Corporate Hellscape</option>
+                        <option value="startup">Chaotic Startup</option>
+                        <option value="nonprofit">Underfunded Nonprofit</option>
+                        <option value="freelance">Freelance Uncertainty</option>
+                        <option value="government">Bureaucratic Nightmare</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="reasonToQuit">Top Reason to Quit:</label>
+                    <select id="reasonToQuit" class="form-input">
+                        <option value="bored">Soul-crushing Boredom</option>
+                        <option value="toxic">Toxic Coworkers</option>
+                        <option value="money">Insulting Compensation</option>
+                        <option value="purpose">Lack of Purpose</option>
+                        <option value="micromanaged">Excessive Micromanagement</option>
+                        <option value="overworked">Burnout/Overwork</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dreamJob">Dream Career:</label>
+                    <input type="text" id="dreamJob" placeholder="Professional Nap Tester" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="riskTolerance">Risk Tolerance:</label>
+                    <select id="riskTolerance" class="form-input">
+                        <option value="low">Low (I have plants to feed)</option>
+                        <option value="medium">Medium (I have some savings)</option>
+                        <option value="high">High (YOLO energy)</option>
+                        <option value="extreme">Extreme (Already sold my furniture)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="careerGoal">Ultimate Career Goal:</label>
+                    <select id="careerGoal" class="form-input">
+                        <option value="money">Sweet, Sweet Cash</option>
+                        <option value="balance">Work-Life Balance</option>
+                        <option value="impact">Making a Difference</option>
+                        <option value="fame">Fame and Glory</option>
+                        <option value="minimal">Minimal Effort, Maximum Results</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="skillLevel">Special Skills:</label>
+                    <select id="skillLevel" class="form-input">
+                        <option value="excel">Excel Wizard</option>
+                        <option value="meeting">Professional Meeting Survivor</option>
+                        <option value="emails">Email Ninja</option>
+                        <option value="buzzwords">Buzzword Generator</option>
+                        <option value="coffee">Coffee Consumption Champion</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button id="predictBtn" class="button button-accent">🔮 Reveal Your Future</button>
+            
+            <div id="predictionContainer" class="prediction-container" style="display: none;">
+                <h3>Your Post-Resignation Future</h3>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">Day 1</div>
+                        <div class="timeline-content" id="day1"></div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker">Week 1</div>
+                        <div class="timeline-content" id="week1"></div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker">Month 1</div>
+                        <div class="timeline-content" id="month1"></div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker">Year 1</div>
+                        <div class="timeline-content" id="year1"></div>
+                    </div>
+                    
+                    <div class="timeline-item highlight">
+                        <div class="timeline-marker">5 Years Later</div>
+                        <div class="timeline-content" id="year5"></div>
+                    </div>
+                </div>
+                
+                <div class="future-career">
+                    <h4>Your Future Career</h4>
+                    <div id="futureCareer" class="future-career-content"></div>
+                </div>
+                
+                <div class="career-stats">
+                    <h4>Key Life Stats</h4>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-label">Happiness Level</div>
+                            <div class="stat-bar-container">
+                                <div id="happinessBar" class="stat-bar" style="width: 0%"></div>
+                            </div>
+                            <div id="happinessValue" class="stat-value">0%</div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-label">Financial Success</div>
+                            <div class="stat-bar-container">
+                                <div id="moneyBar" class="stat-bar money-bar" style="width: 0%"></div>
+                            </div>
+                            <div id="moneyValue" class="stat-value">0%</div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-label">Work-Life Balance</div>
+                            <div class="stat-bar-container">
+                                <div id="balanceBar" class="stat-bar balance-bar" style="width: 0%"></div>
+                            </div>
+                            <div id="balanceValue" class="stat-value">0%</div>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <div class="stat-label">Career Fulfillment</div>
+                            <div class="stat-bar-container">
+                                <div id="fulfillmentBar" class="stat-bar fulfillment-bar" style="width: 0%"></div>
+                            </div>
+                            <div id="fulfillmentValue" class="stat-value">0%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alternate-futures">
+                    <h4>Alternate Timeline</h4>
+                    <p>In a parallel universe where you stayed at your job:</p>
+                    <div id="alternateFuture" class="alternate-future-content"></div>
+                </div>
+                
+                <div class="tweet-prediction">
+                    <h4>Your Future Tweet</h4>
+                    <div class="tweet-box">
+                        <div class="tweet-header">
+                            <span class="tweet-name">Future You</span>
+                            <span class="tweet-handle">@FreeFromCorporatePrison</span>
+                        </div>
+                        <div id="tweetContent" class="tweet-content"></div>
+                        <div class="tweet-date">Posted <span id="tweetDate"></span></div>
+                    </div>
+                </div>
+                
+                <div class="share-results">
+                    <button id="sharePredictionBtn" class="button button-small">Share This Future</button>
+                    <button id="tryAgainBtn" class="button button-small">Try Different Future</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="actions">
+            <a href="index.html" class="button button-small">← Back to Existential Crisis</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Made with 🔮 and career anxiety</p>
+        <p>© 2025 ShouldIQuitMyJob.Today</p>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const predictBtn = document.getElementById('predictBtn');
+            const predictionContainer = document.getElementById('predictionContainer');
+            const sharePredictionBtn = document.getElementById('sharePredictionBtn');
+            const tryAgainBtn = document.getElementById('tryAgainBtn');
+            
+            // Future prediction content libraries
+            const day1Scenarios = {
+                corporate: [
+                    "You wake up 3 hours later than usual and experience a strange feeling. After a moment, you realize it's called 'happiness.' You spend the day deleting Slack from all your devices.",
+                    "You send a department-wide email with 8 spelling errors and don't even care. Freedom tastes like not proofreading.",
+                    "You set up an auto-reply email that just says 'I'm not here. And I never will be again.' Your phone is bombarded with panicked texts from your former boss.",
+                ],
+                startup: [
+                    "You delete all 17 productivity apps from your phone and experience a euphoric high when your notification count drops to zero.",
+                    "You realize you've been wearing the company hoodie and quickly throw it into the ceremonial 'startup recovery' fire you've prepared in your backyard.",
+                    "You check LinkedIn and discover your CEO has already posted an inspirational message about 'overcoming team setbacks.' You block them."
+                ],
+                nonprofit: [
+                    "You write thank-you notes to yourself for all the unpaid overtime you contributed to a cause that still matters to you, even if the workplace was dysfunctional.",
+                    "You disable email notifications and immediately feel your blood pressure drop to normal levels for the first time in years.",
+                    "You realize you've been conditioned to feel guilty about self-care and spend the day deliberately doing nothing productive."
+                ],
+                freelance: [
+                    "You fire your most annoying client with a professionally worded email. Then you send a second email with just a 'bye forever' gif because professionalism is no longer your concern.",
+                    "You turn off your 17 different income stream trackers and sleep peacefully through the entire day.",
+                    "You merge your 'work' and 'personal' calendars into one called 'just life now' and delete all recurring client meetings."
+                ],
+                government: [
+                    "You shred your collection of bureaucratic form templates that you've been hoarding. It takes three hours because there are so many.",
+                    "You realize you no longer have to pretend to understand acronyms. You spend the day saying acronyms incorrectly out loud just because you can.",
+                    "You wear jeans and a t-shirt all day, occasionally looking at yourself in the mirror and whispering 'business casual no more.'"
+                ]
+            };
+            
+            const week1Scenarios = {
+                bored: [
+                    "You start 7 different hobby projects simultaneously because your brain is finally free to be interested in things again.",
+                    "You catch yourself staring at a wall for 30 minutes, but instead of feeling guilty about lost productivity, you realize you were actually thinking creative thoughts for once."
+                ],
+                toxic: [
+                    "Your sleep quality improves dramatically. You realize you haven't had a stress dream about your coworkers in days.",
+                    "You unfriend all your former colleagues on social media and feel a wave of relief wash over you. You celebrate with ice cream."
+                ],
+                money: [
+                    "You create a detailed budget spreadsheet that doesn't make you cry. Your Excel skills are finally being used for self-care.",
+                    "You apply for three jobs that all pay better than your last position and wonder why you waited so long."
+                ],
+                purpose: [
+                    "You volunteer at a local organization and feel more accomplished in 3 hours than you did in 3 years at your previous job.",
+                    "You start a blog about finding meaningful work. Your first post is titled 'How I Escaped Corporate Purgatory' and gets surprisingly good traffic."
+                ],
+                micromanaged: [
+                    "You rearrange your furniture just because you can make decisions without approval now. It's exhilarating.",
+                    "You realize you've checked your phone 75% less because no one is messaging you asking for updates every 15 minutes."
+                ],
+                overworked: [
+                    "Your friends comment that you look 5 years younger after just one week of adequate sleep and reduced stress.",
+                    "You establish healthy boundaries by setting up a fake work schedule, then deliberately breaking it just because you can."
+                ]
+            };
+            
+            const month1Scenarios = {
+                low: [
+                    "Playing it safe has kept your anxiety manageable. You've lined up part-time work that covers the bills while you explore better options.",
+                    "Your careful planning has paid off with minimal financial stress. You've cut some luxury expenses but your plants are still well-fed and happy."
+                ],
+                medium: [
+                    "Your calculated risk is working out. You've tapped some savings, but new job prospects are looking promising.",
+                    "You've created a six-month runway by cutting unnecessary expenses. Your coffee habit remains gloriously intact."
+                ],
+                high: [
+                    "Your boldness is paying dividends. A former colleague connected you with an exciting opportunity that never would have happened if you hadn't quit.",
+                    "Living without a safety net has accelerated your job search. You've had 5 interviews and 2 promising offers."
+                ],
+                extreme: [
+                    "You're living on a friend's couch but have never felt more alive. Your absence of furniture has been rebranded as 'minimalist lifestyle consulting' on your new business cards.",
+                    "Your complete life reset is going surprisingly well. Turns out selling all your possessions was both financially and psychologically liberating."
+                ]
+            };
+            
+            const year1Scenarios = {
+                money: [
+                    "Your focus on financial success has paid off. You've increased your income by 20% and established multiple revenue streams.",
+                    "Your salary negotiation skills have improved dramatically now that you're not desperate. Your new compensation package includes benefits you didn't even know existed."
+                ],
+                balance: [
+                    "You now have a '5-to-9' instead of a '9-to-5' - 5pm to 9am is strictly your personal time, and you're healthier for it.",
+                    "You've mastered the four-day workweek and spend every Friday on personal projects. Your last job's HR director would be scandalized."
+                ],
+                impact: [
+                    "Your work now directly helps people in tangible ways. The thank-you notes you've received are worth more than any performance review from your old job.",
+                    "You've found a role where your values and skills align. The sense of purpose has improved every aspect of your life."
+                ],
+                fame: [
+                    "Your industry podcast has a small but dedicated following. Three people recognized your voice at a conference, which you found both weird and gratifying.",
+                    "Your thought leadership pieces have been gaining traction. You're not famous famous, but you're '7,500 LinkedIn followers' famous."
+                ],
+                minimal: [
+                    "You've perfected the art of setting low expectations and then comfortably meeting them. Your stress levels are at an all-time low.",
+                    "Your efficiency systems mean you complete a full day's work in 4 hours, leaving plenty of time for your true passion: naps."
+                ]
+            };
+            
+            const year5Careers = {
+                excel: [
+                    "DATA VISUALIZATION CONSULTANT: Your spreadsheet wizardry has evolved into creating intuitive dashboards that make complex data accessible. Companies pay you obscene amounts of money to make their numbers look pretty and understandable.",
+                    "PRODUCTIVITY SYSTEMS ARCHITECT: You've developed a methodology that optimizes workflows using advanced Excel formulas. Silicon Valley executives pay thousands for your workshops."
+                ],
+                meeting: [
+                    "CORPORATE RETREAT DESIGNER: You've channeled your meeting survival skills into creating actually useful team-building experiences. Your specialty is 'meetings that should have been emails, reimagined as fun activities.'",
+                    "BUSINESS MEDITATION COACH: You teach executives how to survive their own meetings by bringing mindfulness principles to the boardroom. Your book 'Zen and the Art of Not Checking Email During Meetings' is a bestseller."
+                ],
+                emails: [
+                    "DIGITAL COMMUNICATION STRATEGIST: You've turned your email ninja skills into a consulting business that helps teams communicate more effectively. Your inbox zero method has a cult following.",
+                    "TECHNICAL DOCUMENTATION EXPERT: Your ability to clearly communicate complex ideas has made you invaluable in the tech sector. You haven't used the phrase 'per my last email' in years."
+                ],
+                buzzwords: [
+                    "BRANDING CONSULTANT: You've redirected your buzzword fluency into creating authentic brand messaging. The irony is not lost on you.",
+                    "CORPORATE SATIRE WRITER: You've parlayed your intimate knowledge of business jargon into a successful career writing satire. Your corporate buzzword bingo app has 500,000 downloads."
+                ],
+                coffee: [
+                    "ARTISAN COFFEE IMPORTER: Your refined caffeine palate led you to discover small-batch coffee farms. You now supply beans to high-end cafes across the country.",
+                    "WORKPLACE CULTURE CONSULTANT: You've transformed your coffee break networking skills into a business that helps companies build more connected teams. Coffee is still expensed."
+                ]
+            };
+            
+            const alternateFutures = {
+                corporate: "You would have been promoted to Senior Despair Coordinator, with a 3% raise and twice the responsibilities. Your desk plant would have died from neglect.",
+                startup: "The company would have gone through three pivots, changed its name twice, and you'd still be waiting for your equity to be worth something.",
+                nonprofit: "You'd be running on fumes, sustained only by occasional thank-you notes from beneficiaries and the free snacks provided during donor meetings.",
+                freelance: "You'd have added seven more productivity tools to your workflow while actually becoming less productive. Your rates would still be the same.",
+                government: "You'd have achieved mastery of 137 more acronyms and could navigate 24 different approval processes blindfolded. Your retirement countdown calendar would be prominently displayed."
+            };
+            
+            const tweets = [
+                "Can't believe it's been {years} years since I quit that soul-crushing job. Best decision ever. #FreedomFriday #CareerGlow",
+                "Remembering how I used to dread Mondays at my old job. Now I'm {activity} and getting paid for it! #BestDecisionEver #QuitYourJob",
+                "If you're reading this and hate your job, consider this your sign. I quit {years} years ago today and have never looked back. #NoRegrets",
+                "LinkedIn just reminded me I'm celebrating {years} years of freedom from corporate servitude. My only regret is not leaving sooner!",
+                "Today marks {years} years since I traded my security badge for {newCareer}. My stress levels (and bank account) thank me. #QuitYourJob",
+                "POV: You quit your toxic job and {years} years later you're {activity} while your old company is still sending 'urgent' emails at 9pm. #Blessed",
+                "This day {years} years ago I was nervously drafting my resignation letter. Now I'm {activity}. Trust your gut, folks. #BestDecisionEver"
+            ];
+            
+            const tweetActivities = [
+                "working from a beach in Bali",
+                "setting my own hours",
+                "actually using my PTO without guilt",
+                "working with people who value my contributions",
+                "getting paid what I'm worth",
+                "sleeping past 6am by choice",
+                "wearing pajamas to 'management meetings'",
+                "declining meeting invites without anxiety",
+                "using my 'emergency' fund for actual emergencies, not mental health days"
+            ];
+            
+            const newCareers = [
+                "entrepreneurial freedom",
+                "a career that respects my boundaries",
+                "work that actually matters",
+                "a job that energizes instead of drains me",
+                "coworkers who aren't secretly plotting my downfall",
+                "a boss who knows my actual name"
+            ];
+            
+            // Function to generate prediction
+            predictBtn.addEventListener('click', function() {
+                // Get input values
+                const currentRole = document.getElementById('currentRole').value || "Corporate Drone";
+                const workEnvironment = document.getElementById('workEnvironment').value;
+                const reasonToQuit = document.getElementById('reasonToQuit').value;
+                const riskTolerance = document.getElementById('riskTolerance').value;
+                const careerGoal = document.getElementById('careerGoal').value;
+                const skillLevel = document.getElementById('skillLevel').value;
+                const dreamJob = document.getElementById('dreamJob').value || "Something fulfilling";
+                
+                // Generate timeline scenarios
+                const day1 = day1Scenarios[workEnvironment][Math.floor(Math.random() * day1Scenarios[workEnvironment].length)];
+                const week1 = week1Scenarios[reasonToQuit][Math.floor(Math.random() * week1Scenarios[reasonToQuit].length)];
+                const month1 = month1Scenarios[riskTolerance][Math.floor(Math.random() * month1Scenarios[riskTolerance].length)];
+                const year1 = year1Scenarios[careerGoal][Math.floor(Math.random() * year1Scenarios[careerGoal].length)];
+                const year5Career = year5Careers[skillLevel][Math.floor(Math.random() * year5Careers[skillLevel].length)];
+                
+                // Generate stats
+                let happiness, money, balance, fulfillment;
+                
+                // Risk tolerance affects initial happiness and money
+                switch(riskTolerance) {
+                    case 'low':
+                        happiness = 65 + Math.floor(Math.random() * 20);
+                        money = 50 + Math.floor(Math.random() * 20);
+                        break;
+                    case 'medium':
+                        happiness = 70 + Math.floor(Math.random() * 20);
+                        money = 60 + Math.floor(Math.random() * 25);
+                        break;
+                    case 'high':
+                        happiness = 75 + Math.floor(Math.random() * 25);
+                        money = 40 + Math.floor(Math.random() * 60); // Higher variance
+                        break;
+                    case 'extreme':
+                        happiness = 80 + Math.floor(Math.random() * 20);
+                        money = 30 + Math.floor(Math.random() * 70); // Highest variance
+                        break;
+                }
+                
+                // Career goal affects balance and fulfillment
+                switch(careerGoal) {
+                    case 'money':
+                        balance = 40 + Math.floor(Math.random() * 30);
+                        fulfillment = 50 + Math.floor(Math.random() * 40);
+                        money += 20; // Bonus for money focus
+                        break;
+                    case 'balance':
+                        balance = 80 + Math.floor(Math.random() * 20);
+                        fulfillment = 60 + Math.floor(Math.random() * 30);
+                        money -= 10; // Slight penalty for balance focus
+                        break;
+                    case 'impact':
+                        balance = 50 + Math.floor(Math.random() * 30);
+                        fulfillment = 80 + Math.floor(Math.random() * 20);
+                        break;
+                    case 'fame':
+                        balance = 30 + Math.floor(Math.random() * 40);
+                        fulfillment = 70 + Math.floor(Math.random() * 30);
+                        break;
+                    case 'minimal':
+                        balance = 90 + Math.floor(Math.random() * 10);
+                        fulfillment = 40 + Math.floor(Math.random() * 50);
+                        money -= 20; // Penalty for minimal effort
+                        break;
+                }
+                
+                // Ensure values are within bounds
+                happiness = Math.min(100, Math.max(0, happiness));
+                money = Math.min(100, Math.max(0, money));
+                balance = Math.min(100, Math.max(0, balance));
+                fulfillment = Math.min(100, Math.max(0, fulfillment));
+                
+                // Generate alternative future
+                const alternateFuture = alternateFutures[workEnvironment];
+                
+                // Generate tweet
+                const randomTweet = tweets[Math.floor(Math.random() * tweets.length)]
+                    .replace('{years}', Math.floor(Math.random() * 5) + 1)
+                    .replace('{activity}', tweetActivities[Math.floor(Math.random() * tweetActivities.length)])
+                    .replace('{newCareer}', newCareers[Math.floor(Math.random() * newCareers.length)]);
+                
+                // Future date for tweet
+                const futureDate = new Date();
+                futureDate.setFullYear(futureDate.getFullYear() + Math.floor(Math.random() * 5) + 1);
+                const futureDateStr = futureDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                
+                // Update the DOM
+                document.getElementById('day1').textContent = day1;
+                document.getElementById('week1').textContent = week1;
+                document.getElementById('month1').textContent = month1;
+                document.getElementById('year1').textContent = year1;
+                document.getElementById('year5').textContent = `You've fully transitioned into your new identity as: ${currentRole.toUpperCase()} ➡️ ${year5Career}`;
+                
+                // Future career details
+                const futureCareerText = year5Career.split(':');
+                const careerTitle = futureCareerText[0];
+                const careerDescription = futureCareerText[1] || "You're thriving in a role that perfectly matches your skills and values.";
+                
+                document.getElementById('futureCareer').innerHTML = `
+                    <div class="career-title">${careerTitle}</div>
+                    <div class="career-description">${careerDescription}</div>
+                    <div class="dream-comparison">
+                        <p>Your dream job was: <strong>${dreamJob}</strong></p>
+                        <p>Satisfaction with reality: <strong>${fulfillment}%</strong></p>
+                    </div>
+                `;
+                
+                // Animation for stats
+                animateStats('happinessBar', 'happinessValue', happiness);
+                animateStats('moneyBar', 'moneyValue', money);
+                animateStats('balanceBar', 'balanceValue', balance);
+                animateStats('fulfillmentBar', 'fulfillmentValue', fulfillment);
+                
+                // Set alternate future
+                document.getElementById('alternateFuture').textContent = alternateFuture;
+                
+                // Set tweet
+                document.getElementById('tweetContent').textContent = randomTweet;
+                document.getElementById('tweetDate').textContent = futureDateStr;
+                
+                // Show results with animation
+                predictionContainer.style.display = 'block';
+                predictionContainer.style.opacity = 0;
+                
+                // Fade in animation
+                let opacity = 0;
+                const fadeIn = setInterval(() => {
+                    if (opacity >= 1) {
+                        clearInterval(fadeIn);
+                    }
+                    predictionContainer.style.opacity = opacity;
+                    opacity += 0.1;
+                }, 40);
+                
+                // Scroll to results
+                predictionContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+            
+            // Animate stats bars
+            function animateStats(barId, valueId, targetValue) {
+                const bar = document.getElementById(barId);
+                const valueDisplay = document.getElementById(valueId);
+                let currentValue = 0;
+                
+                const interval = setInterval(() => {
+                    if (currentValue >= targetValue) {
+                        clearInterval(interval);
+                        return;
+                    }
+                    
+                    currentValue += 2;
+                    bar.style.width = `${currentValue}%`;
+                    valueDisplay.textContent = `${currentValue}%`;
+                    
+                    // Change colors based on value
+                    if (currentValue < 40) {
+                        bar.style.backgroundColor = '#E63946'; // Red
+                    } else if (currentValue < 70) {
+                        bar.style.backgroundColor = '#F4A261'; // Orange
+                    } else {
+                        bar.style.backgroundColor = '#2A9D8F'; // Green
+                    }
+                    
+                }, 20);
+            }
+            
+            // Share results (mock functionality)
+            sharePredictionBtn.addEventListener('click', function() {
+                alert("In an alternate timeline, you shared these results on social media. In this timeline, we're still building that feature!");
+            });
+            
+            // Try again
+            tryAgainBtn.addEventListener('click', function() {
+                predictionContainer.style.display = 'none';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+    
+    <style>
+        /* Additional styles for the future predictor page */
+        .form-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1rem;
+        }
+        
+        .form-input {
+            padding: 0.8rem;
+            border: 2px solid var(--secondary);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2);
+        }
+        
+        label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        /* Prediction results styling */
+        .prediction-container {
+            margin-top: 2rem;
+            border-top: 2px dashed var(--secondary);
+            padding-top: 1.5rem;
+            transition: opacity 0.3s ease;
+        }
+        
+        /* Timeline styling */
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 4px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -0.6rem;
+            top: 0.5rem;
+            width: 1.2rem;
+            height: 1.2rem;
+            background: white;
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+        }
+        
+        .timeline-item.highlight::before {
+            background: var(--accent);
+            border-color: var(--secondary);
+            width: 1.5rem;
+            height: 1.5rem;
+            left: -0.75rem;
+        }
+        
+        .timeline-marker {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            line-height: 1.6;
+        }
+        
+        /* Stats styling */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-bar-container {
+            height: 0.8rem;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-bar {
+            height: 100%;
+            background: var(--primary);
+            width: 0;
+            transition: width 1s ease-in-out;
+        }
+        
+        .money-bar {
+            background: #2A9D8F;
+        }
+        
+        .balance-bar {
+            background: #457B9D;
+        }
+        
+        .fulfillment-bar {
+            background: #F4A261;
+        }
+        
+        .stat-value {
+            text-align: right;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+        
+        /* Future Career styling */
+        .future-career, .alternate-futures, .tweet-prediction {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .career-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .career-description {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .dream-comparison {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
+        
+        /* Tweet box styling */
+        .tweet-box {
+            background: #f8f9fa;
+            border: 1px solid #e1e8ed;
+            border-radius: 12px;
+            padding: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .tweet-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tweet-name {
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        .tweet-handle {
+            color: #657786;
+            font-size: 0.9rem;
+        }
+        
+        .tweet-content {
+            margin: 1rem 0;
+            line-height: 1.5;
+        }
+        
+        .tweet-date {
+            color: #657786;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+        
+        .share-results {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .actions {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .form-controls {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .share-results {
+                flex-direction: column;
+            }
+        }
+    </style>
+
+<div class="badge-nav-container">
+    <div class="employee-badge" id="employeeBadge">
+        <div class="badge-lanyard"></div>
+        <div class="badge-flip">
+            <div class="badge-icon">🪪</div>
+            <div class="badge-content">
+                <div class="badge-photo">
+                    <span class="badge-photo-emoji">😎</span>
+                </div>
+                <div class="badge-header">
+                    <h3 class="badge-title">EMPLOYEE NAVIGATION</h3>
+                    <p class="badge-subtitle">ShouldIQuitMyJob.Today Corp.</p>
+                </div>
+                <ul class="clearance-nav">
+                    <li class="clearance-item">
+                        <a href="index.html" class="clearance-link" id="home-link">
+                            <span class="clearance-icon">🏠</span>
+                            <span>Decision Maker</span>
+                            <span class="clearance-level level-basic">BASIC</span>
+                        </a>
+                    </li>
+                    <li class="clearance-item">
+                        <a href="career-calculator.html" class="clearance-link" id="calculator-link">
+                            <span class="clearance-icon">📊</span>
+                            <span>Career Calculator</span>
+                            <span class="clearance-level level-medium">LEVEL 2</span>
+                        </a>
+                    </li>
+                    <li class="clearance-item">
+                        <a href="future-predictor.html" class="clearance-link" id="predictor-link">
+                            <span class="clearance-icon">🔮</span>
+                            <span>Future Predictor</span>
+                            <span class="clearance-level level-high">LEVEL 3</span>
+                        </a>
+                    </li>
+                    <li class="clearance-item">
+                        <a href="resignation-letter.html" class="clearance-link" id="letter-link">
+                            <span class="clearance-icon">📝</span>
+                            <span>Resignation Letter</span>
+                            <span class="clearance-level level-top">TOP SECRET</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="badge-settings">
+                    <h3 class="badge-settings-title">Display Settings</h3>
+                    <div class="badge-setting-item">
+                        <span>Dark Mode</span>
+                        <label class="switch">
+                            <input type="checkbox" id="themeToggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="badge-footer">
+                    ID#: QT-2025-ESC | Expires: Never
+                </div>
+                <div class="badge-detail"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

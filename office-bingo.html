@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generate a custom workplace bingo card - track your daily office frustrations!">
+    
+    <!-- Favicon and Theme Color -->
+    <meta name="theme-color" content="#E63946">
+    
+    <!-- Social Media Tags -->
+    <meta property="og:title" content="Office Bingo Generator - Should I Quit My Job Today">
+    <meta property="og:description" content="Track your daily workplace frustrations with a custom bingo card. Get five in a row? Maybe it's resignation time!">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <title>Office Bingo Generator - Should I Quit My Job Today</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="badge-navbar.css">
+    <link rel="stylesheet" href="bingo-styles.css">
+    <script src="badge-navbar.js" defer></script>
+    <script src="Office Bingo Generator.js"></script>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Office Frustration Bingo 🎲</h1>
+        <p class="subheader">Generate a custom bingo card to track your workplace suffering</p>
+        <p class="disclaimer">Disclaimer: If you get a full card in one day, update your resume immediately.</p>
+        
+        <div class="card">
+            <div class="bingo-controls">
+                <div class="control-group">
+                    <label for="cardTitle">Your Bingo Card Title:</label>
+                    <input type="text" id="cardTitle" class="form-input" placeholder="My Workplace Nightmare" value="Corporate Survival Bingo">
+                </div>
+                
+                <div class="control-group">
+                    <label>Bingo Card Theme:</label>
+                    <div class="theme-buttons">
+                        <button class="theme-btn active" data-theme="general">General Office</button>
+                        <button class="theme-btn" data-theme="meetings">Meeting Hell</button>
+                        <button class="theme-btn" data-theme="remote">Remote Work</button>
+                        <button class="theme-btn" data-theme="corporate">Corporate Speak</button>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label for="freeSpaceText">Free Space Text:</label>
+                    <input type="text" id="freeSpaceText" class="form-input" placeholder="FREE SPACE" value="Existential Dread">
+                </div>
+                
+                <div class="control-group custom-items-section">
+                    <label>Add Your Own Bingo Items:</label>
+                    <div class="custom-items-container">
+                        <input type="text" class="form-input custom-item-input" placeholder="Boss says 'quick question'">
+                        <button id="addCustomItem" class="button button-small">Add</button>
+                    </div>
+                    <div id="customItemsList" class="custom-items-list"></div>
+                </div>
+                
+                <button id="generateBtn" class="button button-accent">Generate Bingo Card</button>
+                <button id="regenerateBtn" class="button">Shuffle Items</button>
+            </div>
+            
+            <div id="bingoCardContainer" class="bingo-card-container">
+                <div class="bingo-card-header">
+                    <h2 id="cardTitleDisplay">Corporate Survival Bingo</h2>
+                </div>
+                
+                <div class="bingo-grid" id="bingoGrid">
+                    <!-- Bingo cells will be generated here -->
+                </div>
+                
+                <div class="bingo-card-footer">
+                    <p>Get 5 in a row? Maybe it's time to visit our <a href="resignation-letter.html">Resignation Letter Generator</a>!</p>
+                </div>
+            </div>
+            
+            <div class="bingo-actions">
+                <button id="printBtn" class="button button-small">Print Bingo Card</button>
+                <button id="downloadBtn" class="button button-small">Download as Image</button>
+                <button id="shareBtn" class="button button-small">Share Bingo Card</button>
+                <button id="resetBtn" class="button button-small">Reset Card</button>
+            </div>
+        </div>
+        
+        <div class="actions">
+            <a href="index.html" class="button button-small">← Back to Home</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Made with 🎲 and workplace trauma</p>
+        <p>© 2025 ShouldIQuitMyJob.Today</p>
+    </footer>
+    
+    <!-- Office Badge Navbar -->
+    <div class="badge-nav-container">
+        <div class="employee-badge" id="employeeBadge">
+            <div class="badge-lanyard"></div>
+            <div class="badge-flip">
+                <div class="badge-icon">🪪</div>
+                <div class="badge-content">
+                    <div class="badge-photo">
+                        <span class="badge-photo-emoji">😎</span>
+                    </div>
+                    <div class="badge-header">
+                        <h3 class="badge-title">EMPLOYEE NAVIGATION</h3>
+                        <p class="badge-subtitle">ShouldIQuitMyJob.Today Corp.</p>
+                    </div>
+                    <ul class="clearance-nav">
+                        <li class="clearance-item">
+                            <a href="index.html" class="clearance-link" id="home-link">
+                                <span class="clearance-icon">🏠</span>
+                                <span>Decision Maker</span>
+                                <span class="clearance-level level-basic">BASIC</span>
+                            </a>
+                        </li>
+                        <li class="clearance-item">
+                            <a href="career-calculator.html" class="clearance-link" id="calculator-link">
+                                <span class="clearance-icon">📊</span>
+                                <span>Career Calculator</span>
+                                <span class="clearance-level level-medium">LEVEL 2</span>
+                            </a>
+                        </li>
+                        <li class="clearance-item">
+                            <a href="future-predictor.html" class="clearance-link" id="predictor-link">
+                                <span class="clearance-icon">🔮</span>
+                                <span>Future Predictor</span>
+                                <span class="clearance-level level-high">LEVEL 3</span>
+                            </a>
+                        </li>
+                        <li class="clearance-item">
+                            <a href="resignation-letter.html" class="clearance-link" id="letter-link">
+                                <span class="clearance-icon">📝</span>
+                                <span>Resignation Letter</span>
+                                <span class="clearance-level level-top">TOP SECRET</span>
+                            </a>
+                        </li>
+                        <li class="clearance-item">
+                            <a href="office-bingo.html" class="clearance-link" id="bingo-link">
+                                <span class="clearance-icon">🎮</span>
+                                <span>Office Bingo</span>
+                                <span class="clearance-level level-medium">LEVEL 2</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="badge-settings">
+                        <h3 class="badge-settings-title">Display Settings</h3>
+                        <div class="badge-setting-item">
+                            <span>Dark Mode</span>
+                            <label class="switch">
+                                <input type="checkbox" id="themeToggle">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="badge-footer">
+                        ID#: QT-2025-ESC | Expires: Never
+                    </div>
+                    <div class="badge-detail"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add html2canvas library for image export -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    
+    
+</body>
+</html>

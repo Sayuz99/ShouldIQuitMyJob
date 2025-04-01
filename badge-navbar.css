@@ -1,0 +1,385 @@
+/* badge-navbar.css - Fixed and improved styles for the employee badge navbar */
+/* Main badge container */
+.badge-nav-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000; /* Ensure it's above other content */
+    font-family: 'Poppins', sans-serif;
+}
+/* Badge styling with improved transitions */
+.employee-badge {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid var(--primary);
+    transition: width 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                height 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                background-color 0.3s ease; /* Add transition for theme change */
+}
+/* Expanded badge with fixed dimensions and scrolling */
+.employee-badge.expanded {
+    width: 280px;
+    height: 450px; /* Fixed height instead of auto to prevent jumpy animation */
+    max-height: 80vh; /* But constrain to viewport height */
+    border-radius: 10px;
+    overflow-y: auto; /* Allow scrolling if content is too tall */
+}
+/* Fixed animation for expanding badge */
+.employee-badge.expanding {
+    overflow: hidden !important; /* Ensure no scrollbar appears during animation */
+}
+/* Badge icon with improved positioning */
+.badge-icon {
+    font-size: 1.8rem;
+    color: var(--primary);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+    z-index: 2; /* Make sure icon stays above content */
+}
+/* Icon position when expanded */
+.employee-badge.expanded .badge-icon {
+    top: 30px;
+    left: 30px;
+    transform: translate(0, 0);
+}
+/* Badge content with improved visibility transition */
+.badge-content {
+    opacity: 0;
+    visibility: hidden;
+    padding: 60px 20px 30px;
+    width: 100%;
+    height: 100%;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, 
+                visibility 0.3s ease, 
+                transform 0.3s ease;
+}
+/* Expanded content visibility */
+.employee-badge.expanded .badge-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+/* Badge header styling */
+.badge-header {
+    border-bottom: 2px dashed var(--light-text);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.badge-title {
+    font-weight: 600;
+    color: var(--text);
+    font-size: 0.9rem;
+    margin: 0 0 5px;
+}
+
+.badge-subtitle {
+    color: var(--light-text);
+    font-size: 0.7rem;
+    margin: 0;
+}
+
+/* Navigation list styling */
+.clearance-nav {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0 0;
+}
+
+.clearance-item {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+/* Nav links with improved transitions */
+.clearance-link {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 6px;
+    color: var(--text);
+    text-decoration: none;
+    transition: all 0.2s ease, 
+                background-color 0.2s ease, 
+                color 0.2s ease;
+    font-size: 0.95rem;
+    position: relative; /* For active indicator */
+}
+
+.clearance-link:hover {
+    background-color: rgba(230, 57, 70, 0.1);
+    transform: translateX(5px);
+}
+
+.clearance-link.active {
+    background-color: rgba(230, 57, 70, 0.15);
+    border-left: 3px solid var(--primary);
+    font-weight: 600;
+}
+
+.clearance-icon {
+    width: 24px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+/* Security level badges */
+.clearance-level {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background-color: var(--background);
+    color: var(--light-text);
+    transition: background-color 0.3s ease, color 0.3s ease; /* For theme transitions */
+}
+
+.level-basic {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.level-medium {
+    background-color: #fff3cd;
+    color: #664d03;
+}
+
+.level-high {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+.level-top {
+    background-color: #cff4fc;
+    color: #055160;
+}
+
+/* Settings section styling */
+.badge-settings {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px dashed var(--light-text);
+}
+
+.badge-settings-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+}
+
+.badge-setting-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    font-size: 0.85rem;
+}
+
+/* Badge footer with better spacing */
+.badge-footer {
+    margin-top: 15px;
+    padding: 10px 0;
+    font-size: 0.7rem;
+    color: var(--light-text);
+    text-align: center;
+    border-top: 1px dashed var(--light-text);
+}
+
+/* Badge lanyard decoration */
+.badge-lanyard {
+    position: absolute;
+    top: -10px;
+    left: 30px;
+    width: 12px;
+    height: 10px;
+    background-color: var(--secondary);
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.badge-lanyard:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 30px;
+    background-color: var(--secondary);
+}
+
+/* Profile photo styling */
+.badge-photo {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    top: 15px;
+    right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: background-color 0.3s ease; /* For theme transitions */
+}
+
+.badge-photo-emoji {
+    font-size: 1.2rem;
+}
+
+/* Badge detail decoration */
+.badge-detail {
+    position: absolute;
+    width: 40px;
+    height: 10px;
+    background-color: var(--primary);
+    border-radius: 10px 10px 0 0;
+    bottom: 0;
+    left: 20px;
+    transition: background-color 0.3s ease; /* For theme transitions */
+}
+
+/* Fixed toggle switch styling */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin: 0 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Fixed position for mobile screens */
+@media (max-width: 768px) {
+    .badge-nav-container {
+        bottom: 20px;
+        top: auto;
+        right: 20px;
+    }
+    
+    .employee-badge.expanded {
+        width: 250px;
+        height: auto;
+        max-height: 70vh;
+    }
+}
+
+/* Dark theme adjustments with improved color transitions */
+body.dark-theme .employee-badge {
+    background-color: #2B2D42;
+    border-color: var(--primary);
+}
+
+body.dark-theme .badge-icon {
+    color: var(--primary);
+}
+
+body.dark-theme .badge-content {
+    color: var(--text);
+}
+
+body.dark-theme .badge-title {
+    color: var(--text);
+}
+
+body.dark-theme .badge-photo {
+    background-color: #3c3f58;
+    border-color: #4a4e6a;
+}
+
+body.dark-theme .clearance-link {
+    color: var(--text);
+}
+
+body.dark-theme .clearance-link:hover {
+    background-color: rgba(230, 57, 70, 0.2);
+}
+
+body.dark-theme .clearance-link.active {
+    background-color: rgba(230, 57, 70, 0.25);
+}
+
+body.dark-theme .clearance-level {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme .level-basic {
+    background-color: rgba(209, 231, 221, 0.2);
+    color: #b3e0c5;
+}
+
+body.dark-theme .level-medium {
+    background-color: rgba(255, 243, 205, 0.2);
+    color: #ffe69c;
+}
+
+body.dark-theme .level-high {
+    background-color: rgba(248, 215, 218, 0.2);
+    color: #f5c2c7;
+}
+
+body.dark-theme .level-top {
+    background-color: rgba(207, 244, 252, 0.2);
+    color: #9eeaf9;
+}

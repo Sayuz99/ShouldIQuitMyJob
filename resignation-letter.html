@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generate hilarious resignation letters that will make HR question everything">
+    
+    <!-- Favicon and Theme Color -->
+    <meta name="theme-color" content="#E63946">
+    
+    <!-- Social Media Tags -->
+    <meta property="og:title" content="Epic Resignation Letter Generator">
+    <meta property="og:description" content="Create the perfect exit strategy with our hilarious resignation letter generator!">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <title>Epic Resignation Letter Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Add jsPDF library for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Optional: Pre-load html2canvas for image export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="badge-navbar.css">
+    <script src="badge-navbar.js" defer></script>
+
+</head>
+<body>
+    <div class="container">
+        <h1>🔥 Epic Resignation Letter Generator 🔥</h1>
+        <p class="subheader">Craft the perfect exit strategy that will make HR question their career choices</p>
+        <p class="disclaimer">Disclaimer: For entertainment purposes only. Use at your own risk (and amusement).</p>
+        
+        <div class="card">
+            <div class="form-controls">
+                <div class="form-group">
+                    <label for="bossName">Your Boss's Name:</label>
+                    <input type="text" id="bossName" placeholder="e.g., Captain Micromanager" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="yourName">Your Name:</label>
+                    <input type="text" id="yourName" placeholder="Soon-to-be-free Person" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="departureDate">Last Day:</label>
+                    <input type="date" id="departureDate" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="annoyance">Biggest Office Annoyance:</label>
+                    <select id="annoyance" class="form-input">
+                        <option value="meetings">Endless Meetings</option>
+                        <option value="coffee">Terrible Coffee</option>
+                        <option value="printer">Demonic Printer</option>
+                        <option value="micromanagement">Excessive Micromanagement</option>
+                        <option value="cubicle">Soul-crushing Cubicle</option>
+                        <option value="jargon">Corporate Buzzwords</option>
+                        <option value="temperature">Office Temperature Wars</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="futureCareer">Your "New Career":</label>
+                    <select id="futureCareer" class="form-input">
+                        <option value="influencer">Social Media Influencer</option>
+                        <option value="yoga">Goat Yoga Instructor</option>
+                        <option value="fortune">Fortune Cookie Writer</option>
+                        <option value="professional">Professional Napper</option>
+                        <option value="taste">Ice Cream Taste Tester</option>
+                        <option value="cat">Professional Cat Cuddler</option>
+                        <option value="basket">Underwater Basket Weaver</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="letterStyle">Resignation Style:</label>
+                    <select id="letterStyle" class="form-input">
+                        <option value="professional">Passive-Aggressive Professional</option>
+                        <option value="dramatic">Dramatically Theatrical</option>
+                        <option value="honest">Brutally Honest</option>
+                        <option value="poetic">Poetically Profound</option>
+                        <option value="corporate">Corporate Buzzword Overload</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button id="generateLetterBtn" class="button button-accent">Generate Career Liberation Document</button>
+            
+            <div id="letterContainer" class="letter-container">
+                <div class="letter-header">OFFICIAL NOTICE OF RESIGNATION</div>
+                <div id="letterOutput" class="letter-output"></div>
+                <div class="letter-actions">
+                    <button id="copyBtn" class="button button-small">Copy to Clipboard</button>
+                    <button id="downloadBtn" class="button button-small">Download as PDF</button>
+                    <button id="downloadImgBtn" class="button button-small">Download as Image</button>
+                    <button id="regenerateBtn" class="button button-small">Regenerate</button>
+                    <button id="shareBtn" class="button button-small">Share</button>
+                </div>
+            </div>
+        </div>
+
+        <a href="index.html" class="button">← Back to Existential Crisis</a>
+    </div>
+
+    <footer>
+        <p>Made with 📝 and the sweet taste of freedom</p>
+        <p>© 2025 ShouldIQuitMyJob.Today</p>
+    </footer>
+
+    <script>
+        // Templates organized by letter style
+        const letterTemplates = {
+            professional: [
+                `Dear {bossName},
+
+After careful consideration and exactly {randomNumber} meetings that could have been emails, I find myself at a professional crossroads. I am writing to formally tender my resignation from my position, effective {departureDate}.
+
+While I've valued the opportunity to {corporateBuzz} and {corporateBuzz}, I must follow my passion for becoming a full-time {futureCareer}. The {annoyanceText} has prepared me well for this dramatic career pivot.
+
+I'm happy to assist with the transition over the next two weeks, during which I'll be documenting all my processes and quietly removing my emergency chocolate stash from my desk.
+
+Sincerely,
+{yourName}
+
+P.S. {funnyPostscript}`,
+
+                `To: {bossName}
+From: {yourName}
+Subject: Notice of Career Redirection
+
+Please accept this letter as formal notification of my intention to pursue alternative employment opportunities, effective {departureDate}. After {randomMonths} months of {annoyanceText}, I've decided to rebrand my professional narrative.
+
+During my time here, I've developed valuable skills in {bizSkill} and {bizSkill}, which will serve me well in my new role as a {futureCareer}. I'm confident this transition aligns with my core competencies and personal brand.
+
+I'll ensure a seamless knowledge transfer during my remaining time, and I'm happy to train my replacement on the intricate art of appearing busy during mandatory town halls.
+
+Best regards,
+{yourName}
+
+P.S. {funnyPostscript}`
+            ],
+            
+            dramatic: [
+                `HEAR YE, HEAR YE! {bossName} AND ASSOCIATES!
+
+It is with a mixture of overwhelming joy and theatrical flair that I, {yourName}, hereby announce my GRAND DEPARTURE from this institution of employment, effective {departureDate}!
+
+For {randomMonths} fortnights, I have endured the {annoyanceText} with the patience of a saint and the tolerance of a caffeinated sloth. But no more! The universe calls me to my true destiny: {futureCareer}!
+
+Let the record show that I survived {randomNumber} team-building exercises and exactly ZERO of them built a team. I leave behind my swivel chair (which squeaks in E minor) and take with me only memories and the office stapler (which I've grown emotionally attached to).
+
+With dramatic flair and zero regrets,
+{yourName}, Soon-To-Be-Former Employee Extraordinaire
+
+P.S. {funnyPostscript}`,
+
+                `ATTENTION WORKPLACE DENIZENS AND {bossName}!
+
+The time has come! After much soul-searching, meditation, and staring blankly at my computer screen, I, {yourName}, am breaking free from these corporate chains! My last day of glorious employment shall be {departureDate}.
+
+For too long has the {annoyanceText} tested my will to live! For too many days have I smiled through meetings about meetings! NO MORE! I journey forth to embrace my destiny as a {futureCareer}!
+
+I shall remember the {randomNumber} potlucks where no one ate my contributions. I shall treasure the {randomNumber} times the printer worked on the first try. These memories I take with me into the sunset of professional liberation!
+
+Theatrically yours until {departureDate},
+{yourName}
+
+P.S. {funnyPostscript}`
+            ],
+            
+            honest: [
+                `Hey {bossName},
+
+I quit. My last day is {departureDate}.
+
+Let's be real—the {annoyanceText} has finally broken me. I've spent {randomMonths} months pretending to be interested in quarterly projections and acting like I care about "synergy."
+
+I'm leaving to become a {futureCareer}, which sounds ridiculous but is still better than attending another 7 AM "optional" breakfast meeting.
+
+Things I won't miss:
+1. The smell of fish in the microwave
+2. That one guy who types like he's angry at his keyboard
+3. Pretending I remember people's names
+4. The birthday celebrations for people I've never spoken to
+
+I'll help with the transition because I'm not a monster, but please don't ask me to train my replacement on a Friday afternoon.
+
+Later,
+{yourName}
+
+P.S. {funnyPostscript}`,
+
+                `Dear {bossName} (and whoever in HR has to process this),
+
+I'm out. {departureDate} will be my last day.
+
+After spending {randomNumber} hours staring at the same spreadsheet and dealing with the {annoyanceText}, I've decided life is too short. I'm going to be a {futureCareer} instead, which my parents are thrilled about (not).
+
+To be completely transparent:
+- I've been using my "doctor appointments" to go to matinee movies
+- I'm the one who keeps changing the thermostat
+- I've never actually read any of the company-wide emails
+- The plant on my desk has been fake for {randomMonths} months and no one noticed
+
+I'll tie up loose ends before I go, and no, I won't be needing a reference letter.
+
+No regrets,
+{yourName}
+
+P.S. {funnyPostscript}`
+            ],
+            
+            poetic: [
+                `Dearest {bossName},
+
+As the office clock ticks its relentless rhythm,
+I pen these words with bittersweet conviction.
+The time has come to bid adieu,
+My final day shall be {departureDate}, it's true.
+
+Through {randomMonths} seasons I've weathered the storm,
+Of {annoyanceText} that became the norm.
+But now a new chapter beckons me hence,
+To explore the art of {futureCareer}, so immense.
+
+Like a butterfly from its chrysalis breaking free,
+I spread my wings toward what I'm meant to be.
+The fluorescent lights no longer my sun,
+My journey here is finally done.
+
+With gratitude for lessons learned and growth achieved,
+I take my leave, my resignation hereby received.
+
+Poetically yours until the end of time (or {departureDate}, whichever comes first),
+{yourName}
+
+P.S. {funnyPostscript}`,
+
+                `O {bossName}, Leader of Cubicle Kingdom,
+
+Hear now the sonnet of my departure,
+As I resign effective {departureDate}.
+No longer shall I endure the rapture
+Of {annoyanceText} that sealed my fate.
+
+For {randomMonths} moons I've toiled in these halls,
+Sending emails into the corporate void.
+But destiny {futureCareer} now calls,
+And my current path must be destroyed.
+
+The meeting room shall know my face no more,
+The break room fridge my lunch shall never hold.
+I seek a life on distant shore,
+Where tales of my new venture shall be told.
+
+With metaphors and meter I now part,
+Carrying memories forever in my heart.
+
+With iambic pentameter and dramatic pauses,
+{yourName}
+
+P.S. {funnyPostscript}`
+            ],
+            
+            corporate: [
+                `Dear {bossName},
+
+Please consider this correspondence as my formal intention to strategically pivot away from my current role, effective {departureDate}, in order to synergistically align my core competencies with emergent market opportunities in the {futureCareer} space.
+
+After {randomMonths} fiscal quarters of leveraging cross-functional collaboration despite the {annoyanceText}, I've identified a blue ocean strategy that requires my immediate bandwidth reallocation.
+
+My time with the organization has enabled me to ideate and execute on mission-critical deliverables while fostering a growth mindset. I trust my contributions have moved the needle and created a win-win paradigm for all stakeholders.
+
+Moving forward, I'll ensure a frictionless transition of my action items and will circle back with comprehensive documentation of my workflows. Let's touch base to discuss next steps and keep the lines of communication open as we navigate this transition period.
+
+Regards,
+{yourName}
+
+P.S. {funnyPostscript}`
+            ]
+        };
+
+        // Dynamic content generators
+        const corporateBuzzwords = [
+            "synergize cross-functional deliverables",
+            "streamline mission-critical paradigms",
+            "revolutionize scalable interfaces",
+            "harness bleeding-edge initiatives",
+            "maximize user-centric experiences",
+            "orchestrate dynamic infrastructures",
+            "transform strategic platforms",
+            "innovate transparent architectures"
+        ];
+
+        const bizSkills = [
+            "looking busy while doing nothing",
+            "pretending to take notes",
+            "strategic coffee consumption",
+            "meeting survival tactics",
+            "spreadsheet manipulation",
+            "deadline negotiation",
+            "email avoidance strategies",
+            "looking interested during presentations",
+            "crafting convincing excuses",
+            "corporate jargon fluency"
+        ];
+
+        const funnyPostscripts = [
+            "I'm not taking the stapler. That's a rumor. (But I am taking all the good pens.)",
+            "Please forward my final paycheck to 'Anywhere But Here, Freedom Street, Happyville.'",
+            "I'd like to thank the vending machine on floor 3 for being the most reliable relationship I've had here.",
+            "For the record, it was me who set the microwave to 99:99 every Friday afternoon.",
+            "My desk plant deserved better. His name was Herbert, and he was my only ally.",
+            "I've been secretly training my mouse cursor to move on its own. My work here is done.",
+            "The password to my computer is 'iQuitLOL123'. Don't tell anyone.",
+            "If anyone needs me, I'll be somewhere not answering my phone.",
+            "I've left detailed instructions about my job in my desk drawer. Just kidding, I have no idea what I do here either.",
+            "The secret ingredient in my potluck brownies was spite. And chocolate chips."
+        ];
+
+        const annoyanceMapping = {
+            "meetings": [
+                "endless parade of pointless meetings",
+                "daily 'quick sync' that somehow lasts 2 hours",
+                "meetings about meetings about meetings",
+                "brainstorming sessions where good ideas go to die"
+            ],
+            "coffee": [
+                "coffee that tastes like it was filtered through a gym sock",
+                "mysterious brown liquid that claims to be coffee",
+                "coffee machine that judges my life choices",
+                "office coffee that's somehow both burnt and watery"
+            ],
+            "printer": [
+                "printer that has a personal vendetta against me",
+                "demonic printer that only works when IT isn't looking",
+                "printer that eats important documents for breakfast",
+                "printer with more error codes than the Matrix"
+            ],
+            "micromanagement": [
+                "hourly 'check-ins' about my progress",
+                "constant shoulder-surfing from management",
+                "requirement to document my bathroom breaks",
+                "microscopic examination of every email I send"
+            ],
+            "cubicle": [
+                "gray fabric walls that slowly absorb my soul",
+                "cubicle smaller than a prison cell",
+                "desk space where hope goes to die",
+                "three square feet I've called home for too long"
+            ],
+            "jargon": [
+                "endless barrage of meaningless buzzwords",
+                "conversations that sound like AI-generated business speak",
+                "meetings where 'synergy' is used as both noun and verb",
+                "emails full of acronyms nobody actually understands"
+            ],
+            "temperature": [
+                "office thermostat wars that rival Game of Thrones",
+                "arctic blasts from overhead vents aimed directly at my desk",
+                "climate that requires both a sweater and fan at all times",
+                "temperature that fluctuates more than the stock market"
+            ]
+        };
+
+        const futureCareerMapping = {
+            "influencer": [
+                "professional Instagram influencer for succulent plants",
+                "TikTok dance creator specializing in corporate retreat moves",
+                "YouTube personality reviewing office chair comfort levels",
+                "social media guru teaching people how to look busy at work"
+            ],
+            "yoga": [
+                "goat yoga instructor on a sustainable farm",
+                "underwater yoga specialist for stressed-out fish",
+                "extreme yoga practitioner on mountain summits",
+                "corporate yoga teacher specializing in 'keyboard warrior' poses"
+            ],
+            "fortune": [
+                "fortune cookie message writer",
+                "professional eight-ball shaker",
+                "cosmic horoscope creator for office personalities",
+                "tarot card reader for confused middle managers"
+            ],
+            "professional": [
+                "professional napper with a specialty in power dozing",
+                "consultant on optimal hammock positioning",
+                "sleep quality researcher requiring extensive field testing",
+                "nap pod reviewer for tech startups"
+            ],
+            "taste": [
+                "ice cream taste tester with focus on sprinkle distribution",
+                "chocolate quality control specialist",
+                "pizza topping harmony consultant",
+                "snack food innovation expert"
+            ],
+            "cat": [
+                "professional cat cuddler for anxious felines",
+                "cat behavior translator for luxury pet hotels",
+                "feline mood music composer",
+                "cat toy effectiveness analyst"
+            ],
+            "basket": [
+                "underwater basket weaver with a specialty in aquatic crafts",
+                "submersible textile artist",
+                "pioneer in deep-sea crafting techniques",
+                "marine-based artisanal weaving consultant"
+            ]
+        };
+
+        // DOM ready event listener
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateBtn = document.getElementById('generateLetterBtn');
+            const regenerateBtn = document.getElementById('regenerateBtn');
+            const copyBtn = document.getElementById('copyBtn');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const shareBtn = document.getElementById('shareBtn');
+            const letterOutput = document.getElementById('letterOutput');
+            const letterContainer = document.getElementById('letterContainer');
+            
+            // Set departure date default to 2 weeks from now
+            const twoWeeksFromNow = new Date();
+            twoWeeksFromNow.setDate(twoWeeksFromNow.getDate() + 14);
+            document.getElementById('departureDate').valueAsDate = twoWeeksFromNow;
+            
+            // Initially hide the letter container
+            letterContainer.style.display = 'none';
+            
+            // Generate letter function
+            function generateLetter() {
+                const bossName = document.getElementById('bossName').value || 'Esteemed Manager';
+                const yourName = document.getElementById('yourName').value || 'Soon-to-be Ex-Employee';
+                const dateInput = document.getElementById('departureDate').value;
+                
+                // Format the date nicely
+                let departureDate = "two weeks from now";
+                if (dateInput) {
+                    const date = new Date(dateInput);
+                    departureDate = date.toLocaleDateString('en-US', {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+                }
+                
+                const annoyance = document.getElementById('annoyance').value;
+                const futureCareer = document.getElementById('futureCareer').value;
+                const letterStyle = document.getElementById('letterStyle').value;
+                
+                // Get random elements
+                const letterTemplateArray = letterTemplates[letterStyle];
+                const randomTemplate = letterTemplateArray[Math.floor(Math.random() * letterTemplateArray.length)];
+                
+                const randomCorporateBuzz = corporateBuzzwords[Math.floor(Math.random() * corporateBuzzwords.length)];
+                const randomCorporateBuzz2 = corporateBuzzwords[Math.floor(Math.random() * corporateBuzzwords.length)];
+                
+                const randomBizSkill = bizSkills[Math.floor(Math.random() * bizSkills.length)];
+                const randomBizSkill2 = bizSkills[Math.floor(Math.random() * bizSkills.length)];
+                
+                const randomPostscript = funnyPostscripts[Math.floor(Math.random() * funnyPostscripts.length)];
+                
+                // Get random annoyance and future career from the selected categories
+                const randomAnnoyanceText = annoyanceMapping[annoyance][Math.floor(Math.random() * annoyanceMapping[annoyance].length)];
+                const randomFutureCareer = futureCareerMapping[futureCareer][Math.floor(Math.random() * futureCareerMapping[futureCareer].length)];
+                
+                const randomNumber = Math.floor(Math.random() * 100) + 42;
+                const randomMonths = Math.floor(Math.random() * 36) + 6;
+                
+                // Replace placeholders
+                let letter = randomTemplate
+                    .replace(/{bossName}/g, bossName)
+                    .replace(/{yourName}/g, yourName)
+                    .replace(/{departureDate}/g, departureDate)
+                    .replace(/{corporateBuzz}/g, randomCorporateBuzz)
+                    .replace(/{corporateBuzz}/g, randomCorporateBuzz2)
+                    .replace(/{bizSkill}/g, randomBizSkill)
+                    .replace(/{bizSkill}/g, randomBizSkill2)
+                    .replace(/{funnyPostscript}/g, randomPostscript)
+                    .replace(/{annoyanceText}/g, randomAnnoyanceText)
+                    .replace(/{futureCareer}/g, randomFutureCareer)
+                    .replace(/{randomNumber}/g, randomNumber)
+                    .replace(/{randomMonths}/g, randomMonths);
+                    
+                // Display the letter with line breaks
+                letterOutput.innerHTML = letter.replace(/\n/g, '<br>');
+                letterContainer.style.display = 'block';
+                
+                // Add a visual effect when generating
+                letterOutput.classList.add('generate-effect');
+                setTimeout(() => {
+                    letterOutput.classList.remove('generate-effect');
+                }, 500);
+                
+                // Scroll to the letter
+                letterOutput.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            
+            // Copy to clipboard
+            function copyToClipboard() {
+                const text = letterOutput.innerText;
+                navigator.clipboard.writeText(text).then(() => {
+                    copyBtn.textContent = 'Copied! ✓';
+                    copyBtn.classList.add('button-success');
+                    
+                    setTimeout(() => {
+                        copyBtn.textContent = 'Copy to Clipboard';
+                        copyBtn.classList.remove('button-success');
+                    }, 2000);
+                });
+            }
+            
+            // Download as actual PDF with improved formatting
+            function downloadLetter() {
+                try {
+                    // Create new jsPDF instance
+                    const { jsPDF } = window.jspdf;
+                    const doc = new jsPDF({
+                        orientation: "portrait",
+                        unit: "mm",
+                        format: "a4"
+                    });
+                    
+                    // Get text content and info
+                    const letterText = letterOutput.innerHTML
+                        .replace(/<br>/gi, '\n')  // Handle <br> tags
+                        .replace(/<[^>]*>/g, ''); // Remove any other HTML tags
+                    
+                    const bossName = document.getElementById('bossName').value || 'Esteemed Manager';
+                    const yourName = document.getElementById('yourName').value || 'Soon-to-be Ex-Employee';
+                    
+                    // Define colors and constants
+                    const primaryColor = [230, 57, 70]; // E63946 in RGB
+                    const secondaryColor = [69, 123, 157]; // 457B9D
+                    const pageWidth = 210;
+                    const pageHeight = 297;
+                    const margin = 20;
+                    const contentWidth = pageWidth - (2 * margin);
+                    
+                    // Add red header banner
+                    doc.setFillColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+                    doc.rect(0, 0, 210, 20, 'F');
+                    
+                    // Add header text
+                    doc.setTextColor(255, 255, 255);
+                    doc.setFontSize(18);
+                    doc.setFont("helvetica", "bold");
+                    doc.text("OFFICIAL NOTICE OF RESIGNATION", 105, 13, { align: 'center' });
+                    
+                    // Add subtle background pattern - light blue dots
+                    doc.setFillColor(220, 230, 240, 0.5); // Light blue dots with transparency
+                    for (let x = 25; x < pageWidth - 15; x += 20) {
+                        for (let y = 30; y < pageHeight - 15; y += 20) {
+                            doc.circle(x, y, 2, 'F');
+                        }
+                    }
+                    
+                    // Add big watermark in the center
+                    doc.setFont("helvetica", "bold");
+                    doc.setFontSize(120);
+                    doc.setTextColor(230, 180, 180, 0.15); // Very light red with high transparency
+                    doc.text("CONFIDENTIAL", 105, 160, { 
+                        align: 'center',
+                        angle: -45
+                    });
+                    
+                    // Draw dotted border - blue dashed line
+                    function drawDottedBorder() {
+                        doc.setDrawColor(secondaryColor[0], secondaryColor[1], secondaryColor[2]);
+                        doc.setLineWidth(0.5);
+                        
+                        const borderMargin = 15; // Move border outward
+                        const borderWidth = pageWidth - (2 * borderMargin);
+                        const borderHeight = pageHeight - borderMargin - 15;
+                        
+                        // Number of segments
+                        const segmentCount = 80;
+                        const dashLength = 2;
+                        const gapLength = 2;
+                        
+                        // Top border
+                        for (let i = 0; i < segmentCount; i++) {
+                            const x = borderMargin + (i * (borderWidth / segmentCount));
+                            if (i % 2 === 0) { // Draw only even segments for dashed effect
+                                doc.line(x, 25, x + dashLength, 25);
+                            }
+                        }
+                        
+                        // Bottom border
+                        for (let i = 0; i < segmentCount; i++) {
+                            const x = borderMargin + (i * (borderWidth / segmentCount));
+                            if (i % 2 === 0) {
+                                doc.line(x, borderHeight, x + dashLength, borderHeight);
+                            }
+                        }
+                        
+                        // Left border
+                        for (let i = 0; i < segmentCount; i++) {
+                            const y = 25 + (i * ((borderHeight - 25) / segmentCount));
+                            if (i % 2 === 0) {
+                                doc.line(borderMargin, y, borderMargin, y + dashLength);
+                            }
+                        }
+                        
+                        // Right border
+                        for (let i = 0; i < segmentCount; i++) {
+                            const y = 25 + (i * ((borderHeight - 25) / segmentCount));
+                            if (i % 2 === 0) {
+                                doc.line(borderMargin + borderWidth, y, borderMargin + borderWidth, y + dashLength);
+                            }
+                        }
+                    }
+                    
+                    drawDottedBorder();
+                    
+                    // Reset text color for content
+                    doc.setTextColor(0, 0, 0);
+                    
+                    // Parse the text content for better formatting
+                    const parsedText = letterText.trim().split('\n\n');
+                    
+                    // Calculate content area
+                    const contentX = margin + 15;
+                    const contentMaxWidth = pageWidth - (2 * contentX);
+                    let yPos = 50; // Starting position after the header
+                    
+                    // Process the text paragraphs
+                    parsedText.forEach((paragraph, index) => {
+                        if (paragraph.trim() === '') return;
+                        
+                        // Special formatting for first paragraph (usually greeting/header)
+                        if (index === 0 && (paragraph.includes('To:') || paragraph.includes('Dear'))) {
+                            const headerLines = paragraph.split('\n');
+                            doc.setFont("helvetica", "normal");
+                            doc.setFontSize(12);
+                            
+                            if (headerLines.length <= 3) {
+                                // Format as header
+                                headerLines.forEach(line => {
+                                    doc.text(line, 105, yPos, { align: 'center' });
+                                    yPos += 7;
+                                });
+                            } else {
+                                // Center the text
+                                const wrappedText = doc.splitTextToSize(paragraph, contentMaxWidth);
+                                doc.text(wrappedText, 105, yPos, { align: 'center' });
+                                yPos += (wrappedText.length * 7) + 10;
+                            }
+                        } 
+                        // Special formatting for signature
+                        else if (index === parsedText.length - 2 && paragraph.includes('regards') || 
+                                paragraph.includes('Sincerely') || 
+                                paragraph.includes('yours')) {
+                            const sigLines = paragraph.split('\n');
+                            doc.setFont("helvetica", "normal");
+                            doc.setFontSize(12);
+                            
+                            sigLines.forEach(line => {
+                                doc.text(line, 105, yPos, { align: 'center' });
+                                yPos += 7;
+                            });
+                        }
+                        // Special formatting for postscript
+                        else if (index === parsedText.length - 1 && paragraph.includes('P.S.')) {
+                            yPos += 5; // Extra space before P.S.
+                            doc.setFont("helvetica", "normal");
+                            doc.setFontSize(12);
+                            
+                            // Center the P.S.
+                            const wrappedPS = doc.splitTextToSize(paragraph, contentMaxWidth);
+                            doc.text(wrappedPS, 105, yPos, { align: 'center' });
+                        }
+                        // Regular body paragraph
+                        else {
+                            doc.setFont("helvetica", "normal");
+                            doc.setFontSize(12);
+                            
+                            // Center aligned text with proper line wrapping
+                            const wrappedText = doc.splitTextToSize(paragraph, contentMaxWidth);
+                            doc.text(wrappedText, 105, yPos, { align: 'center' });
+                            
+                            // Calculate space needed for this paragraph plus margin
+                            yPos += (wrappedText.length * 7) + 15;
+                        }
+                    });
+                    
+                    // Save the PDF
+                    doc.save('epic_resignation_letter.pdf');
+                    
+                    // Visual feedback
+                    downloadBtn.textContent = 'Downloaded! ✓';
+                    downloadBtn.classList.add('button-success');
+                    setTimeout(() => {
+                        downloadBtn.textContent = 'Download as PDF';
+                        downloadBtn.classList.remove('button-success');
+                    }, 2000);
+                } catch (err) {
+                    console.error("PDF generation failed:", err);
+                    alert("Could not generate PDF. Falling back to text download.");
+                    
+                    // Fallback to text file if PDF generation fails
+                    const text = letterOutput.innerText;
+                    const element = document.createElement('a');
+                    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+                    element.setAttribute('download', 'epic_resignation_letter.txt');
+                    
+                    element.style.display = 'none';
+                    document.body.appendChild(element);
+                    element.click();
+                    document.body.removeChild(element);
+                }
+            }
+            
+            // Download as Image (PNG/JPG)
+            function downloadAsImage() {
+                try {
+                    // Add html2canvas library dynamically if not already loaded
+                    if (typeof html2canvas === 'undefined') {
+                        const script = document.createElement('script');
+                        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+                        script.onload = executeImageDownload;
+                        document.head.appendChild(script);
+                    } else {
+                        executeImageDownload();
+                    }
+                    
+                    function executeImageDownload() {
+                        // Create a container with the right styling
+                        const container = document.createElement('div');
+                        container.style.position = 'absolute';
+                        container.style.left = '-9999px';
+                        container.style.top = '-9999px';
+                        container.style.width = '794px'; // A4 width in pixels at 96 DPI
+                        document.body.appendChild(container);
+                        
+                        // Create header
+                        const header = document.createElement('div');
+                        header.style.backgroundColor = '#E63946';
+                        header.style.color = 'white';
+                        header.style.padding = '15px';
+                        header.style.textAlign = 'center';
+                        header.style.fontWeight = 'bold';
+                        header.style.fontSize = '22px';
+                        header.innerHTML = 'OFFICIAL NOTICE OF RESIGNATION';
+                        container.appendChild(header);
+                        
+                        // Create content area with background pattern
+                        const content = document.createElement('div');
+                        content.style.position = 'relative';
+                        content.style.padding = '40px 30px';
+                        content.style.backgroundColor = 'white';
+                        content.style.minHeight = '900px';
+                        content.style.boxSizing = 'border-box';
+                        content.style.border = '2px dashed #457B9D';
+                        content.style.margin = '15px';
+                        
+                        // Add dotted background pattern
+                        content.style.backgroundImage = 'radial-gradient(circle, rgba(220, 230, 240, 0.5) 1px, transparent 1px)';
+                        content.style.backgroundSize = '20px 20px';
+                        
+                        // Add watermark
+                        const watermark = document.createElement('div');
+                        watermark.style.position = 'absolute';
+                        watermark.style.top = '50%';
+                        watermark.style.left = '50%';
+                        watermark.style.transform = 'translate(-50%, -50%) rotate(-45deg)';
+                        watermark.style.fontSize = '80px';
+                        watermark.style.fontWeight = 'bold';
+                        watermark.style.color = 'rgba(230, 180, 180, 0.15)';
+                        watermark.style.pointerEvents = 'none';
+                        watermark.style.zIndex = '0';
+                        watermark.innerHTML = 'CONFIDENTIAL';
+                        content.appendChild(watermark);
+                        
+                        // Add letter content
+                        const letterContent = document.createElement('div');
+                        letterContent.style.position = 'relative';
+                        letterContent.style.zIndex = '1';
+                        letterContent.style.textAlign = 'center';
+                        letterContent.innerHTML = letterOutput.innerHTML;
+                        content.appendChild(letterContent);
+                        
+                        container.appendChild(content);
+                        
+                        // Convert to image
+                        html2canvas(container, {
+                            scale: 2, // Higher resolution
+                            useCORS: true,
+                            allowTaint: true,
+                            backgroundColor: 'white'
+                        }).then(canvas => {
+                            // Show format selection modal
+                            const formatModal = document.createElement('div');
+                            formatModal.style.position = 'fixed';
+                            formatModal.style.top = '0';
+                            formatModal.style.left = '0';
+                            formatModal.style.width = '100%';
+                            formatModal.style.height = '100%';
+                            formatModal.style.backgroundColor = 'rgba(0,0,0,0.7)';
+                            formatModal.style.display = 'flex';
+                            formatModal.style.justifyContent = 'center';
+                            formatModal.style.alignItems = 'center';
+                            formatModal.style.zIndex = '9999';
+                            
+                            const modalContent = document.createElement('div');
+                            modalContent.style.backgroundColor = 'white';
+                            modalContent.style.padding = '20px';
+                            modalContent.style.borderRadius = '10px';
+                            modalContent.style.textAlign = 'center';
+                            modalContent.innerHTML = `
+                                <h3>Choose Image Format</h3>
+                                <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+                                    <button id="pngBtn" class="button button-small">PNG (Higher Quality)</button>
+                                    <button id="jpgBtn" class="button button-small">JPG (Smaller Size)</button>
+                                    <button id="cancelImgBtn" class="button button-small">Cancel</button>
+                                </div>
+                            `;
+                            
+                            formatModal.appendChild(modalContent);
+                            document.body.appendChild(formatModal);
+                            
+                            // Handle format selection
+                            document.getElementById('pngBtn').addEventListener('click', () => {
+                                downloadCanvasAsImage(canvas, 'png');
+                                document.body.removeChild(formatModal);
+                            });
+                            
+                            document.getElementById('jpgBtn').addEventListener('click', () => {
+                                downloadCanvasAsImage(canvas, 'jpg');
+                                document.body.removeChild(formatModal);
+                            });
+                            
+                            document.getElementById('cancelImgBtn').addEventListener('click', () => {
+                                document.body.removeChild(formatModal);
+                            });
+                            
+                            // Clean up
+                            document.body.removeChild(container);
+                        });
+                    }
+                    
+                    function downloadCanvasAsImage(canvas, format) {
+                        const imgFormat = format === 'jpg' ? 'image/jpeg' : 'image/png';
+                        const fileName = `epic_resignation_letter.${format}`;
+                        
+                        // Convert canvas to data URL and download
+                        const imgData = canvas.toDataURL(imgFormat, format === 'jpg' ? 0.9 : 1.0);
+                        const link = document.createElement('a');
+                        link.href = imgData;
+                        link.download = fileName;
+                        link.click();
+                        
+                            // Visual feedback
+                        downloadImgBtn.textContent = 'Downloaded! ✓';
+                        downloadImgBtn.classList.add('button-success');
+                        setTimeout(() => {
+                            downloadImgBtn.textContent = 'Download as Image';
+                            downloadImgBtn.classList.remove('button-success');
+                        }, 2000);
+                    }
+                } catch (err) {
+                    console.error("Image generation failed:", err);
+                    alert("Could not generate image. Please try PDF format instead.");
+                }
+            }
+            
+            // Share functionality (simulated)
+            function shareLetter() {
+                alert('📱 Share your epic resignation letter with the world!\n\nThis feature would normally open a sharing dialog to send your masterpiece to friends, family, or post directly to social media.\n\nFor now, use the Copy button to share your letter manually.');
+            }
+            
+            // Add event listeners
+            generateBtn.addEventListener('click', generateLetter);
+            regenerateBtn.addEventListener('click', generateLetter);
+            copyBtn.addEventListener('click', copyToClipboard);
+            downloadBtn.addEventListener('click', downloadLetter);
+            downloadImgBtn.addEventListener('click', downloadAsImage);
+            shareBtn.addEventListener('click', shareLetter);
+            
+            // Add animation effects to the button
+            generateBtn.addEventListener('mouseover', function() {
+                this.classList.add('button-hover');
+            });
+            
+            generateBtn.addEventListener('mouseout', function() {
+                this.classList.remove('button-hover');
+            });
+            
+            // Generate a letter automatically on page load for demo purposes
+            generateLetter();
+        });
+    </script>
+
+    <style>
+        /* Additional styles for resignation letter page */
+        .form-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1rem;
+        }
+        
+        .form-input {
+            padding: 0.8rem;
+            border: 2px solid var(--secondary);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2);
+        }
+        
+        label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        .letter-container {
+            margin-top: 2rem;
+            animation: fadeIn 0.5s forwards;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .letter-header {
+            background: var(--primary);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .letter-output {
+            background: white;
+            padding: 2.5rem;
+            margin: 0;
+            line-height: 1.8;
+            color: #333;
+            font-family: 'Georgia', serif;
+            min-height: 300px;
+            position: relative;
+            overflow-wrap: break-word;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23457b9d' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        .letter-output::after {
+            content: "CONFIDENTIAL";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 5rem;
+            opacity: 0.06;
+            color: var(--primary);
+            font-weight: bold;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .letter-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 1.5rem;
+            background: #f9f9f9;
+            border-top: 1px solid #eee;
+        }
+        
+        /* Button styles */
+        #generateLetterBtn {
+            animation: pulse 2s infinite;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            padding: 1rem 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            z-index: 1;
+        }
+        
+        #generateLetterBtn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+            z-index: -1;
+        }
+        
+        #generateLetterBtn:hover:before {
+            width: 100%;
+        }
+        
+        .button-success {
+            background: #2a9d8f !important;
+        }
+        
+        .button-hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+        }
+        
+        /* Animation for letter generation */
+        .generate-effect {
+            animation: generate 0.5s ease-in-out;
+        }
+        
+        @keyframes generate {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            50% { transform: scale(1.02); opacity: 0.9; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
+            50% { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); }
+            100% { transform: scale(1); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); }
+        }
+        
+        /* Media queries */
+        @media (max-width: 768px) {
+            .form-controls {
+                grid-template-columns: 1fr;
+            }
+            
+            .letter-actions {
+                flex-direction: column;
+                gap: 0.7rem;
+            }
+            
+            .letter-actions .button {
+                width: 100%;
+            }
+            
+            .letter-output {
+                padding: 1.5rem;
+            }
+        }
+        
+        /* Dark theme adjustments */
+        body.dark-theme .letter-container {
+            background: #2B2D42;
+        }
+        
+        body.dark-theme .letter-output {
+            background-color: #2B2D42;
+            color: #F8F9FA;
+        }
+        
+        body.dark-theme .letter-actions {
+            background: #22242f;
+            border-top: 1px solid #444;
+        }
+        
+        body.dark-theme .form-input {
+            background: #2B2D42;
+            color: #F8F9FA;
+        }
+    </style>
+
+<div class="badge-nav-container">
+    <div class="employee-badge" id="employeeBadge">
+        <div class="badge-lanyard"></div>
+        <div class="badge-flip">
+            <div class="badge-icon">🪪</div>
+            <div class="badge-content">
+                <div class="badge-photo">
+                    <span class="badge-photo-emoji">😎</span>
+                </div>
+                <div class="badge-header">
+                    <h3 class="badge-title">EMPLOYEE NAVIGATION</h3>
+                    <p class="badge-subtitle">ShouldIQuitMyJob.Today Corp.</p>
+                </div>
+                <ul class="clearance-nav">
+                    <li class="clearance-item">
+                        <a href="index.html" class="clearance-link" id="home-link">
+                            <span class="clearance-icon">🏠</span>
+                            <span>Decision Maker</span>
+                            <span class="clearance-level level-basic">BASIC</span>
+                        </a>
+                    </li>
+                    <li class="clearance-item">
+                        <a href="career-calculator.html" class="clearance-link" id="calculator-link">
+                            <span class="clearance-icon">📊</span>
+                            <span>Career Calculator</span>
+                            <span class="clearance-level level-medium">LEVEL 2</span>
+                        </a>
+                    </li>
+                    <li class="clearance-item">
+                        <a href="future-predictor.html" class="clearance-link" id="predictor-link">
+                            <span class="clearance-icon">🔮</span>
+                            <span>Future Predictor</span>
+                            <span class="clearance-level level-high">LEVEL 3</span>
+                        </a>
+                    </li>
+                    <li class="clearance-item">
+                        <a href="resignation-letter.html" class="clearance-link" id="letter-link">
+                            <span class="clearance-icon">📝</span>
+                            <span>Resignation Letter</span>
+                            <span class="clearance-level level-top">TOP SECRET</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="badge-settings">
+                    <h3 class="badge-settings-title">Display Settings</h3>
+                    <div class="badge-setting-item">
+                        <span>Dark Mode</span>
+                        <label class="switch">
+                            <input type="checkbox" id="themeToggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="badge-footer">
+                    ID#: QT-2025-ESC | Expires: Never
+                </div>
+                <div class="badge-detail"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  
+</body>
+</html>

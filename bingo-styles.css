@@ -1,0 +1,496 @@
+/* Office Bingo Specific Styles */
+
+/* Control Panel Styling */
+.bingo-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.theme-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.theme-btn {
+    padding: 0.6rem 1.2rem;
+    background: var(--card-bg);
+    border: 2px solid var(--secondary);
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.theme-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.theme-btn.active {
+    background: var(--secondary);
+    color: white;
+    border-color: var(--secondary);
+}
+
+.custom-items-container {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.custom-item-input {
+    flex: 1;
+}
+
+.custom-items-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+    max-height: 150px;
+    overflow-y: auto;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.custom-item {
+    background: var(--primary);
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.custom-item-remove {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    padding: 0 0.2rem;
+}
+
+/* Bingo Card Styling */
+.bingo-card-container {
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    border: 4px solid var(--primary);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    background: white;
+    max-width: 650px;
+    margin: 2rem auto;
+}
+
+.bingo-card-header {
+    background: var(--primary);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+.bingo-card-header h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: white;
+}
+
+.bingo-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+    padding: 4px;
+    background: var(--light-text);
+}
+
+.bingo-cell {
+    aspect-ratio: 1;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+    line-height: 1.3;
+}
+
+.bingo-cell:hover {
+    background: #f8f9fa;
+}
+
+.bingo-cell.marked {
+    background: #f0f9e8;
+}
+
+.bingo-cell.marked::after {
+    content: '✓';
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 1rem;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.bingo-cell.free-space {
+    background: #ffeee6;
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1rem;
+}
+
+.bingo-cell-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cell-emoji {
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+}
+
+.bingo-card-footer {
+    background: #f8f9fa;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 2px dashed var(--light-text);
+}
+
+.bingo-card-footer a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.bingo-card-footer a:hover {
+    text-decoration: underline;
+}
+
+.bingo-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+/* Winning animation */
+@keyframes winningPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.winning-line {
+    animation: winningPulse 1s infinite;
+}
+
+/* Print styles */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    
+    .bingo-card-container, .bingo-card-container * {
+        visibility: visible;
+    }
+    
+    .bingo-card-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        box-shadow: none;
+    }
+    
+    .bingo-cell.marked::after {
+        display: none;
+    }
+    
+    .bingo-cell {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .bingo-card-header {
+        background: white !important;
+        border-bottom: 2px solid black;
+    }
+    
+    .bingo-card-header h2 {
+        color: black !important;
+    }
+    
+    .bingo-card-footer {
+        border-top: 2px solid black;
+        background: white !important;
+    }
+    
+    .bingo-grid {
+        background: black !important;
+    }
+}
+
+/* Dark theme adjustments */
+body.dark-theme .bingo-card-container {
+    background: var(--card-bg);
+    border-color: var(--primary);
+}
+
+body.dark-theme .bingo-cell {
+    background: #2B2D42;
+    color: var(--text);
+    border: 1px solid #3c3f58;
+}
+
+body.dark-theme .bingo-cell:hover {
+    background: #32354d;
+}
+
+body.dark-theme .bingo-cell.marked {
+    background: #2a3b32;
+}
+
+body.dark-theme .bingo-cell.free-space {
+    background: #3d2a2c;
+}
+
+body.dark-theme .bingo-card-footer {
+    background: #232536;
+    border-top: 2px dashed #3c3f58;
+}
+
+body.dark-theme .theme-btn {
+    background: #2B2D42;
+    border-color: var(--secondary);
+    color: var(--text);
+}
+
+body.dark-theme .theme-btn.active {
+    background: var(--secondary);
+    color: white;
+}
+
+body.dark-theme .custom-items-list {
+    border-color: #3c3f58;
+    background: #2B2D42;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .bingo-card-container {
+        max-width: 100%;
+    }
+    
+    .bingo-cell {
+        font-size: 0.7rem;
+        padding: 0.3rem;
+    }
+    
+    .cell-emoji {
+        font-size: 1.2rem;
+    }
+    
+    .bingo-card-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .bingo-actions {
+        flex-direction: column;
+    }
+    
+    .bingo-actions .button {
+        width: 100%;
+    }
+    
+    .theme-buttons {
+        flex-direction: column;
+    }
+}
+
+/* Confetti animation for bingo win */
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 30px;
+    background: #ffd700;
+    top: 0;
+    opacity: 0;
+}
+
+.confetti-piece:nth-child(1) {
+    left: 7%;
+    transform: rotate(-40deg);
+    animation: makeItRain 1000ms infinite ease-out;
+    animation-delay: 182ms;
+    animation-duration: 1116ms;
+}
+
+.confetti-piece:nth-child(2) {
+    left: 14%;
+    transform: rotate(4deg);
+    animation: makeItRain 1000ms infinite ease-out;
+    animation-delay: 161ms;
+    animation-duration: 1076ms;
+}
+
+.confetti-piece:nth-child(3) {
+    left: 21%;
+    transform: rotate(-51deg);
+    animation: makeItRain 1000ms infinite ease-out;
+    animation-delay: 481ms;
+    animation-duration: 1103ms;
+}
+
+.confetti-piece:nth-child(4) {
+    left: 28%;
+    transform: rotate(61deg);
+    animation: makeItRain 1000ms infinite ease-out;
+    animation-delay: 334ms;
+    animation-duration: 708ms;
+}
+
+.confetti-piece:nth-child(5) {
+    left: 35%;
+    transform: rotate(-52deg);
+    animation: makeItRain 1000ms infinite ease-out;
+    animation-delay: 302ms;
+    animation-duration: 776ms;
+}
+
+@keyframes makeItRain {
+    from {
+        opacity: 0;
+    }
+    
+    50% {
+        opacity: 1;
+    }
+    
+    to {
+        transform: translateY(350px);
+    }
+}
+
+/* ShareModal Styling */
+.share-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+.share-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.share-modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.share-modal.show .share-modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.share-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--light-text);
+}
+
+.share-modal-title {
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+}
+
+.share-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.share-link-container {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.share-link-input {
+    flex: 1;
+    padding: 0.8rem;
+    border: 2px solid var(--secondary);
+    border-radius: 8px 0 0 8px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.copy-link-btn {
+    padding: 0.8rem 1.2rem;
+    background: var(--secondary);
+    color: white;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+
+body.dark-theme .share-modal-content {
+    background: var(--card-bg);
+    color: var(--text);
+}
+
+body.dark-theme .share-link-input {
+    background: #2B2D42;
+    color: var(--text);
+    border-color: var(--secondary);
+}

@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculate exactly how many hours of your life you've traded for coffee and printer jams.">
+    
+    <!-- Favicon and Theme Color -->
+    <meta name="theme-color" content="#E63946">
+    
+    <!-- Social Media Tags -->
+    <meta property="og:title" content="Career Calculator - Should I Quit My Job Today">
+    <meta property="og:description" content="Calculate exactly how many hours of your life you've traded for coffee and printer jams.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <title>Career Calculator - Should I Quit My Job Today</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="badge-navbar.css">
+    <script src="badge-navbar.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Career Time Calculator 📊</h1>
+        <p class="subheader">Calculate exactly how many hours of your life you've traded for coffee and printer jams</p>
+        <p class="disclaimer">Disclaimer: These calculations may cause existential dread. Proceed with caution.</p>
+        
+        <div class="card">
+            <div class="form-controls">
+                <div class="form-group">
+                    <label for="workYears">Years at Current Job:</label>
+                    <input type="number" id="workYears" min="0" max="50" step="0.1" value="1" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="hoursPerWeek">Hours Per Week:</label>
+                    <input type="number" id="hoursPerWeek" min="1" max="100" value="40" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="commuteMins">Daily Commute (mins):</label>
+                    <input type="number" id="commuteMins" min="0" max="240" value="30" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="meetingsPerWeek">Meetings Per Week:</label>
+                    <input type="number" id="meetingsPerWeek" min="0" max="50" value="5" class="form-input">
+                </div>
+                
+                <div class="form-group" style="display: flex; flex-direction: column; align-items: stretch;">
+                    <label for="meetingLength" style="margin-bottom: 0.5rem; white-space: nowrap;">Avg Meeting Length (mins):</label>
+                    <input type="number" id="meetingLength" min="1" max="240" value="60" class="form-input" style="width: 100%; box-sizing: border-box;">
+                </div>
+                
+                <div class="form-group">
+                    <label for="vacationDays">Vacation Days Per Year:</label>
+                    <input type="number" id="vacationDays" min="0" max="60" value="15" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="coffeeBreaks">Coffee Breaks Per Day:</label>
+                    <input type="number" id="coffeeBreaks" min="0" max="10" step="0.5" value="2" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="salary">Annual Salary ($):</label>
+                    <input type="number" id="salary" min="0" step="1000" value="50000" class="form-input">
+                </div>
+            </div>
+            
+            <button id="calculateBtn" class="button button-accent">Calculate Life Exchange Rate</button>
+            
+            <div id="resultsContainer" class="results-container" style="display: none;">
+                <h3>Your Career Time Analysis</h3>
+                
+                <div class="results-grid">
+                    <div class="result-item">
+                        <div class="result-icon">⏰</div>
+                        <div class="result-label">Total Working Hours</div>
+                        <div id="totalHours" class="result-value">0</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="result-icon">🚗</div>
+                        <div class="result-label">Commute Hours</div>
+                        <div id="commuteHours" class="result-value">0</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="result-icon">👥</div>
+                        <div class="result-label">Meeting Hours</div>
+                        <div id="meetingHours" class="result-value">0</div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="result-icon">☕</div>
+                        <div class="result-label">Coffee Break Hours</div>
+                        <div id="coffeeHours" class="result-value">0</div>
+                    </div>
+                    
+                    <div class="result-item highlight">
+                        <div class="result-icon">💰</div>
+                        <div class="result-label">Your Hourly Rate</div>
+                        <div id="hourlyRate" class="result-value">$0</div>
+                    </div>
+                    
+                    <div class="result-item highlight">
+                        <div class="result-icon">🎭</div>
+                        <div class="result-label">Meetings Per Lifetime</div>
+                        <div id="lifetimeMeetings" class="result-value">0</div>
+                    </div>
+                </div>
+                
+                <div class="life-exchange">
+                    <h4>Life Exchange Calculator</h4>
+                    <p>You've traded <span id="lifeDays" class="highlight-text">0</span> days of your life for:</p>
+                    <ul id="exchangeList" class="exchange-list">
+                        <!-- Dynamically populated -->
+                    </ul>
+                </div>
+                
+                <div class="absurd-facts">
+                    <h4>Absurd Facts About Your Work Life</h4>
+                    <ul id="absurdFacts" class="absurd-list">
+                        <!-- Dynamically populated -->
+                    </ul>
+                </div>
+                
+                <div class="recommendation">
+                    <h4>Official Recommendation</h4>
+                    <p id="recommendation" class="recommendation-text"></p>
+                </div>
+                
+                <div class="share-results">
+                    <button id="shareResultsBtn" class="button button-small">Share These Depressing Stats</button>
+                    <button id="printResultsBtn" class="button button-small">Print for Your Boss</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="actions">
+            <a href="index.html" class="button button-small">← Back to Existential Crisis</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Made with ☕ and exponential calculations</p>
+        <p>© 2025 ShouldIQuitMyJob.Today</p>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const calculateBtn = document.getElementById('calculateBtn');
+            const resultsContainer = document.getElementById('resultsContainer');
+            const shareResultsBtn = document.getElementById('shareResultsBtn');
+            const printResultsBtn = document.getElementById('printResultsBtn');
+            
+            // Career exchange items
+            const exchangeItems = [
+                { name: "Netflix series binges", value: 10, unit: "complete series" },
+                { name: "books you could have read", value: 20, unit: "novels" },
+                { name: "countries you could have visited", value: 5, unit: "countries" },
+                { name: "home-cooked meals", value: 365, unit: "gourmet dinners" },
+                { name: "quality time with loved ones", value: 500, unit: "meaningful conversations" },
+                { name: "naps in a hammock", value: 200, unit: "perfect naps" },
+                { name: "learning a new language", value: 2, unit: "languages" },
+                { name: "marathons you could have trained for", value: 4, unit: "marathons" },
+                { name: "DIY home improvement projects", value: 15, unit: "renovations" },
+                { name: "artistic masterpieces", value: 30, unit: "paintings" }
+            ];
+            
+            // Absurd work facts
+            const absurdFacts = [
+                "You've nodded in agreement approximately {nodCount} times in meetings without actually paying attention.",
+                "You've typed roughly {keyCount} keystrokes, which is enough to write '{bookTitle}' {bookCount} times.",
+                "You've said \"let's circle back on this\" approximately {circleCount} times, but only circled back {actualCount} times.",
+                "Your fake laughs at your boss's jokes could power a small village for {powerDays} days.",
+                "You've spent {emailTime} hours deleting emails you never opened.",
+                "You've stared blankly at your computer screen for {blankTime} hours while looking busy.",
+                "You've spent {bathroomTime} hours hiding in the bathroom to avoid work.",
+                "The amount of coffee you've consumed would fill {poolCount} kiddie pools.",
+                "You've used the phrase \"per my last email\" {perEmailCount} times, each time increasing your blood pressure by 2 points.",
+                "You've spent {decisionTime} hours deciding what to eat for lunch, only to get the same thing {sameCount}% of the time."
+            ];
+            
+            // Funny recommendations based on results
+            const recommendations = [
+                { threshold: 1000, text: "You're just getting started! The soul-crushing reality of office life hasn't fully set in yet. Give it time!" },
+                { threshold: 3000, text: "Your spirit is only partially broken. Consider a hobby to distract from the impending doom of decades more of this." },
+                { threshold: 5000, text: "You're at the perfect balance of experience and disillusionment. Update your resume... just in case." },
+                { threshold: 8000, text: "Warning: You've reached dangerous levels of corporate integration. You've started using buzzwords in your personal life." },
+                { threshold: 10000, text: "Critical alert! You now refer to your home as your 'remote office' and your pets as 'dependents'. Seek help immediately!" },
+                { threshold: 15000, text: "Too late. You are now more spreadsheet than human. Your dreams are in Excel format." },
+                { threshold: Infinity, text: "You've transcended human work measurements. You now exist in a perpetual Microsoft Teams call for all eternity." }
+            ];
+            
+            // Perform calculations
+            calculateBtn.addEventListener('click', function() {
+                // Get input values
+                const workYears = parseFloat(document.getElementById('workYears').value) || 0;
+                const hoursPerWeek = parseFloat(document.getElementById('hoursPerWeek').value) || 0;
+                const commuteMins = parseFloat(document.getElementById('commuteMins').value) || 0;
+                const meetingsPerWeek = parseFloat(document.getElementById('meetingsPerWeek').value) || 0;
+                const meetingLength = parseFloat(document.getElementById('meetingLength').value) || 0;
+                const vacationDays = parseFloat(document.getElementById('vacationDays').value) || 0;
+                const coffeeBreaks = parseFloat(document.getElementById('coffeeBreaks').value) || 0;
+                const salary = parseFloat(document.getElementById('salary').value) || 0;
+                
+                // Calculate results
+                const workWeeksPerYear = 52 - (vacationDays / 5);
+                const totalWorkHours = workYears * workWeeksPerYear * hoursPerWeek;
+                const totalCommuteHours = workYears * workWeeksPerYear * 5 * (commuteMins / 60);
+                const totalMeetingHours = workYears * workWeeksPerYear * meetingsPerWeek * (meetingLength / 60);
+                const totalCoffeeHours = workYears * workWeeksPerYear * 5 * coffeeBreaks * 0.25; // Assuming 15 mins per coffee break
+                
+                const totalLifeDays = (totalWorkHours + totalCommuteHours) / 24;
+                const hourlyRate = salary / (workWeeksPerYear * hoursPerWeek);
+                const lifetimeMeetings = workYears * workWeeksPerYear * meetingsPerWeek;
+                
+                // Update results display
+                document.getElementById('totalHours').textContent = Math.round(totalWorkHours).toLocaleString();
+                document.getElementById('commuteHours').textContent = Math.round(totalCommuteHours).toLocaleString();
+                document.getElementById('meetingHours').textContent = Math.round(totalMeetingHours).toLocaleString();
+                document.getElementById('coffeeHours').textContent = Math.round(totalCoffeeHours).toLocaleString();
+                document.getElementById('hourlyRate').textContent = '$' + hourlyRate.toFixed(2);
+                document.getElementById('lifetimeMeetings').textContent = Math.round(lifetimeMeetings).toLocaleString();
+                document.getElementById('lifeDays').textContent = Math.round(totalLifeDays).toLocaleString();
+                
+                // Fill exchange list
+                const exchangeList = document.getElementById('exchangeList');
+                exchangeList.innerHTML = '';
+                
+                // Get 4 random items from the exchange list
+                const shuffledExchanges = [...exchangeItems].sort(() => 0.5 - Math.random());
+                const selectedExchanges = shuffledExchanges.slice(0, 4);
+                
+                selectedExchanges.forEach(item => {
+                    const scaledValue = Math.round(item.value * (totalLifeDays / 365));
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `<span class="exchange-value">${scaledValue.toLocaleString()}</span> ${item.unit} of ${item.name}`;
+                    exchangeList.appendChild(listItem);
+                });
+                
+                // Fill absurd facts
+                const absurdFactsList = document.getElementById('absurdFacts');
+                absurdFactsList.innerHTML = '';
+                
+                // Get 4 random absurd facts
+                const shuffledFacts = [...absurdFacts].sort(() => 0.5 - Math.random());
+                const selectedFacts = shuffledFacts.slice(0, 4);
+                
+                selectedFacts.forEach(fact => {
+                    // Replace placeholders with random appropriate values
+                    let filledFact = fact
+                        .replace('{nodCount}', Math.round(totalMeetingHours * 12).toLocaleString())
+                        .replace('{keyCount}', Math.round(totalWorkHours * 1500).toLocaleString())
+                        .replace('{bookTitle}', ['War and Peace', 'The Lord of the Rings', 'The Complete Works of Shakespeare', 'The Dictionary'][Math.floor(Math.random() * 4)])
+                        .replace('{bookCount}', Math.round(totalWorkHours / 100).toLocaleString())
+                        .replace('{circleCount}', Math.round(meetingsPerWeek * workYears * 10).toLocaleString())
+                        .replace('{actualCount}', Math.round(meetingsPerWeek * workYears).toLocaleString())
+                        .replace('{powerDays}', Math.round(totalMeetingHours / 24).toLocaleString())
+                        .replace('{emailTime}', Math.round(totalWorkHours * 0.1).toLocaleString())
+                        .replace('{blankTime}', Math.round(totalWorkHours * 0.2).toLocaleString())
+                        .replace('{bathroomTime}', Math.round(totalWorkHours * 0.05).toLocaleString())
+                        .replace('{poolCount}', Math.round(workYears * 250 / 100).toLocaleString())
+                        .replace('{perEmailCount}', Math.round(workYears * 52).toLocaleString())
+                        .replace('{decisionTime}', Math.round(workYears * 250 * 0.25).toLocaleString())
+                        .replace('{sameCount}', Math.round(70 + Math.random() * 20));
+                    
+                    const listItem = document.createElement('li');
+                    listItem.textContent = filledFact;
+                    absurdFactsList.appendChild(listItem);
+                });
+                
+                // Set recommendation
+                const recommendation = document.getElementById('recommendation');
+                let selectedRecommendation = recommendations[recommendations.length - 1].text;
+                
+                for (const rec of recommendations) {
+                    if (totalWorkHours <= rec.threshold) {
+                        selectedRecommendation = rec.text;
+                        break;
+                    }
+                }
+                
+                recommendation.textContent = selectedRecommendation;
+                
+                // Show results container with animation
+                resultsContainer.style.display = 'block';
+                resultsContainer.style.opacity = 0;
+                
+                // Simple fade in animation
+                let opacity = 0;
+                const fadeIn = setInterval(() => {
+                    if (opacity >= 1) {
+                        clearInterval(fadeIn);
+                    }
+                    resultsContainer.style.opacity = opacity;
+                    opacity += 0.1;
+                }, 30);
+                
+                // Scroll to results
+                resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+            
+            // Share results (mock functionality)
+            shareResultsBtn.addEventListener('click', function() {
+                alert("You were about to share how much of your life you've wasted at work, but realized that might make your current employer unhappy. Crisis averted!");
+            });
+            
+            // Print results (mock functionality)
+            // Print results (proper functionality with humor)
+            printResultsBtn.addEventListener('click', function() {
+                if(confirm("Printing these stats for your boss would be a pretty bold way to start a resignation conversation. Are you sure about that?")) {
+                    window.print();
+                }
+            });
+        });
+    </script>
+    
+    <style>
+        /* Additional styles for the calculator page */
+        .form-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1rem;
+        }
+        
+        .form-input {
+            padding: 0.8rem;
+            border: 2px solid var(--secondary);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2);
+        }
+        
+        label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        /* Results styling */
+        .results-container {
+            margin-top: 2rem;
+            border-top: 2px dashed var(--secondary);
+            padding-top: 1.5rem;
+            transition: opacity 0.3s ease;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .result-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .result-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .result-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .result-label {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin-bottom: 0.5rem;
+        }
+        
+        .result-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+        
+        .highlight {
+            border-left: 4px solid var(--primary);
+        }
+        
+        .highlight-text {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        /* Life exchange section */
+        .life-exchange, .absurd-facts, .recommendation {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .exchange-list, .absurd-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        
+        .exchange-list li, .absurd-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .exchange-value {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .recommendation-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text);
+            border-left: 4px solid var(--accent);
+            padding-left: 1rem;
+        }
+        
+        .share-results {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .actions {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .form-controls {
+                grid-template-columns: 1fr;
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .share-results {
+                flex-direction: column;
+            }
+        }
+    </style>
+
+<div class="badge-nav-container">
+    <div class="employee-badge" id="employeeBadge">
+        <div class="badge-lanyard"></div>
+        <div class="badge-flip">
+            <div class="badge-icon">🪪</div>
+            <div class="badge-content">
+                <div class="badge-photo">
+                    <span class="badge-photo-emoji">😎</span>
+                </div>
+                <div class="badge-header">
+                    <h3 class="badge-title">EMPLOYEE NAVIGATION</h3>
+                    <p class="badge-subtitle">ShouldIQuitMyJob.Today Corp.</p>
+                </div>
+                <ul class="clearance-nav">
+                    <li class="clearance-item">
+                        <a href="index.html" class="clearance-link" id="home-link">
+                            <span class="clearance-icon">🏠</span>
+                            <span>Decision Maker</span>
+                            <span class="clearance-level level-basic">BASIC</span>
+                        </a>
+                    </li>
+                    <li class="clearance-item">
+                        <a href="career-calculator.html" class="clearance-link" id="calculator-link">
+                            <span class="clearance-icon">📊</span>
+                            <span>Career Calculator</span>
+                            <span class="clearance-level level-medium">LEVEL 2</span>
+                        </a>
+                    </li>
+                    <li class="clearance-item">
+                        <a href="future-predictor.html" class="clearance-link" id="predictor-link">
+                            <span class="clearance-icon">🔮</span>
+                            <span>Future Predictor</span>
+                            <span class="clearance-level level-high">LEVEL 3</span>
+                        </a>
+                    </li>
+                    <li class="clearance-item">
+                        <a href="resignation-letter.html" class="clearance-link" id="letter-link">
+                            <span class="clearance-icon">📝</span>
+                            <span>Resignation Letter</span>
+                            <span class="clearance-level level-top">TOP SECRET</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="badge-settings">
+                    <h3 class="badge-settings-title">Display Settings</h3>
+                    <div class="badge-setting-item">
+                        <span>Dark Mode</span>
+                        <label class="switch">
+                            <input type="checkbox" id="themeToggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="badge-footer">
+                    ID#: QT-2025-ESC | Expires: Never
+                </div>
+                <div class="badge-detail"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  
+</body>
+</html>
